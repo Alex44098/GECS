@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source files\Memory">
+      <UniqueIdentifier>{100cec49-92ec-46ae-89db-aa13f29d4b5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Memory">
+      <UniqueIdentifier>{5653460e-05f0-4a5a-9233-1f27bb4c30a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Handle">
+      <UniqueIdentifier>{96ee75ea-8e8f-4020-ad41-9a3f816c16ab}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Component.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ComponentManager.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Entity.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\EntityManager.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\IComponent.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\IEntity.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Platform.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Memory\IAllocator.h">
+      <Filter>Header files\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Memory\PoolAllocator.h">
+      <Filter>Header files\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Memory\ChunkAllocator.h">
+      <Filter>Header files\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Memory\MemoryManager.h">
+      <Filter>Header files\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Handle\Handle.h">
+      <Filter>Header files\Handle</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Handle\HandleManager.h">
+      <Filter>Header files\Handle</Filter>
+    </ClInclude>
+    <ClInclude Include="include\API.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
