@@ -18,6 +18,12 @@
     <Filter Include="Header files\Handle">
       <UniqueIdentifier>{96ee75ea-8e8f-4020-ad41-9a3f816c16ab}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header files\Utilities">
+      <UniqueIdentifier>{c1aa61bd-03b6-4c74-af3f-9765e21f2baa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Utilities">
+      <UniqueIdentifier>{7f4a843d-c3a3-430b-8ecf-bc0f011cab72}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Component.h">
@@ -62,5 +68,13 @@
     <ClInclude Include="include\API.h">
       <Filter>Header files</Filter>
     </ClInclude>
+    <ClInclude Include="include\Utilities\TypeIDCounter.h">
+      <Filter>Header files\Utilities</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Utilities\TypeIDCounter.cpp">
+      <Filter>Source files\Utilities</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

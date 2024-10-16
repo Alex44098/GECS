@@ -33,6 +33,10 @@
     <ClInclude Include="include\Memory\MemoryManager.h" />
     <ClInclude Include="include\Memory\PoolAllocator.h" />
     <ClInclude Include="include\Platform.h" />
+    <ClInclude Include="include\Utilities\TypeIDCounter.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Utilities\TypeIDCounter.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -120,6 +124,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions);GECS_FRAMEWORK</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

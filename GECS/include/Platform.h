@@ -4,25 +4,24 @@
 #include <stdlib.h>
 #include <stdarg.h>
 #include <stdint.h>
+#include <math.h>
 #include <limits>
 
 #include <vector>
+#include <algorithm>
+#include <functional>
 
 // Creating ".dll" setting
 #ifdef GECS_FRAMEWORK  
-#define GECS_API __declspec(dllexport)   
+	#define GECS_API __declspec(dllexport)   
 #else  
-#define GECS_API __declspec(dllimport)
+	#define GECS_API __declspec(dllimport)
 #endif  
 
 
 // Check for 64-bit system
 #if (defined(_WIN64) || defined(__x86_64__) || defined(__ppc64__) || defined(_M_AMD64) || defined(_M_ARM64) || defined(_M_X64))
-#define GECS_64 1
-
-// Check for 32-bit system
-#elif (defined(_WIN32) && !defined(_WIN64)) || defined(_M_IX86)
-#define GECS_32 1
+	#define GECS_64 1
 #endif
 
 namespace GECS {
