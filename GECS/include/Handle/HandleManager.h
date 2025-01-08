@@ -19,6 +19,9 @@ namespace GECS {
 			void GrowTable() {
 				size_t oldSize = this->m_table.size();
 
+				assert(oldSize < handle_type::MAX_INDICES &&
+						"Max table capacity reached!");
+
 				size_t newSize = std::min(oldSize + m_growSize, handle_type::MAX_INDICES);
 
 				this->m_table.resize(newSize);
@@ -60,15 +63,25 @@ namespace GECS {
 			}
 
 			void ReleaseHandle(handle_type handle) {
-				if (handle.version == m_table[handle.index].first)
-					this->m_table[handle.index].second = nullptr;
+				assert((handle.index < this->m_Table.size() &&
+						handle.version == this->m_Table[handle.index].first) &&
+						"Handle manager: Releasing error. Invalid handle!");
+
+				this->m_table[handle.index].second = nullptr;
 			}
 
 			inline handle_type operator[](typename handle_type::value_type index) const {
+				assert(index < this->m_Table.size() &&
+						"Handle manager: Index out of range!");
+
 				return handle_type(index, this->m_table[index].first);
 			}
 
 			inline T* operator[](handle_type handle) {
+				assert((handle.index < this->m_Table.size() &&
+						handle.version == this->m_Table[handle.index].first) &&
+						"Handle manager: Invalid handle!");
+
 				return this->m_table[handle.index].second;
 			}
 		};

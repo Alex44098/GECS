@@ -6,6 +6,7 @@
 #include <stdint.h>
 #include <math.h>
 #include <limits>
+#include <assert.h>
 
 #include <vector>
 #include <algorithm>
