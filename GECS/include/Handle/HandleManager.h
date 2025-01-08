@@ -15,7 +15,7 @@ namespace GECS {
 			/// </summary>
 			std::vector<std::pair<typename handle_type::value_type, T*>> m_table;
 			size_t m_growSize;
-
+			
 			void GrowTable() {
 				size_t oldSize = this->m_table.size();
 
@@ -23,7 +23,8 @@ namespace GECS {
 
 				this->m_table.resize(newSize);
 
-				for (typename handle_type::value_type i = oldSize; i < newSize; ++i)
+				typename handle_type::value_type i = oldSize;
+				for (; i < newSize; ++i)
 					this->m_table[i] = std::pair<typename handle_type::value_type, T*>();
 			}
 
@@ -41,7 +42,11 @@ namespace GECS {
 					if (this->m_table[i].second == nullptr)
 					{
 						this->m_table[i].second = p_object;
-						this->m_table[i].first = ((this->m_table[i].first + 1) > handle_type::MAX_VERSION) ? handle_type::MIN_VERISON : this->m_table[i].first + 1;
+						this->m_table[i].first =
+							this->m_table[i].first + 1 > handle_type::MAX_VERSION
+								? handle_type::MIN_VERISON
+								: this->m_table[i].first + 1;
+
 						return handle_type(i, this->m_Table[i].first);
 					}
 				}
@@ -55,7 +60,8 @@ namespace GECS {
 			}
 
 			void ReleaseHandle(handle_type handle) {
-				this->m_table[handle.index].second = nullptr;
+				if (handle.version == m_table[handle.index].first)
+					this->m_table[handle.index].second = nullptr;
 			}
 
 			inline handle_type operator[](typename handle_type::value_type index) const {

@@ -13,7 +13,7 @@
 
 // Creating ".dll" setting
 #ifdef GECS_FRAMEWORK  
-	#define GECS_API __declspec(dllexport)   
+	#define GECS_API __declspec(dllexport)
 #else  
 	#define GECS_API __declspec(dllimport)
 #endif  
@@ -48,10 +48,6 @@ namespace GECS {
 	// Float
 	using f32			= float_t;
 	using f64			= double_t;
-
-	// Integer pointers
-	using i_ptr			= intptr_t;
-	using u_ptr			= uintptr_t;
 
 	// Identificator types
 	using object_id		= size_t;

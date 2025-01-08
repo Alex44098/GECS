@@ -17,7 +17,7 @@ namespace GECS {
 			return ENTITY_TYPE_ID;
 		}
 	};
-	
+
 	template <class T>
 	const type_id Entity<T>::ENTITY_TYPE_ID = Identifier::TypeIDCounter<IEntity>::GetTypeId<T>();
 }

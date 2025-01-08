@@ -7,7 +7,7 @@ namespace GECS {
 	class IEntity {
 		Handle m_handle;
 		
-		ComponentManager* mp_ComponentManager;
+		ComponentManager* mp_componentManager;
 
 		IEntity() {}
 
