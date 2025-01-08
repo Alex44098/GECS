@@ -20,7 +20,7 @@ namespace GECS {
 				size_t oldSize = this->m_table.size();
 
 				assert(oldSize < handle_type::MAX_INDICES &&
-						"Max table capacity reached!");
+						"Handle manager: Max table capacity reached!");
 
 				size_t newSize = std::min(oldSize + m_growSize, handle_type::MAX_INDICES);
 

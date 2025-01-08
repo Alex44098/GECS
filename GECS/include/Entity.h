@@ -6,8 +6,14 @@
 namespace GECS {
 	template <class T>
 	class Entity : public IEntity {
+	
 	public:
+		
 		static const type_id ENTITY_TYPE_ID;
+
+		// Entity manager responsible for deleting
+		void operator delete(void*) = delete;
+		void operator delete[](void*) = delete;
 
 		Entity() {}
 

@@ -5,9 +5,14 @@
 
 namespace GECS {
 	class IEntity {
+
+	protected:
+
 		Handle m_handle;
 		
 		ComponentManager* mp_componentManager;
+
+	public:
 
 		IEntity() {}
 
