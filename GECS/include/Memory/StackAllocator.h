@@ -1,7 +1,6 @@
 #pragma once
 
-#include "API.h"
-#include "Memory/IAllocator.h"
+#include "IAllocator.h"
 
 namespace GECS {
 	namespace Memory {

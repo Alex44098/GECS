@@ -71,7 +71,7 @@
     <ClInclude Include="include\Utilities\TypeIDCounter.h">
       <Filter>Header files\Utilities</Filter>
     </ClInclude>
-    <ClInclude Include="StackAllocator.h">
+    <ClInclude Include="include\Memory\StackAllocator.h">
       <Filter>Header files\Memory</Filter>
     </ClInclude>
   </ItemGroup>
@@ -79,10 +79,10 @@
     <ClCompile Include="src\Utilities\TypeIDCounter.cpp">
       <Filter>Source files\Utilities</Filter>
     </ClCompile>
-    <ClCompile Include="PoolAllocator.cpp">
+    <ClCompile Include="src\Memory\PoolAllocator.cpp">
       <Filter>Source files\Memory</Filter>
     </ClCompile>
-    <ClCompile Include="StackAllocator.cpp">
+    <ClCompile Include="src\Memory\StackAllocator.cpp">
       <Filter>Source files\Memory</Filter>
     </ClCompile>
   </ItemGroup>
