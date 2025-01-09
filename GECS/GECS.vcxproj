@@ -34,10 +34,12 @@
     <ClInclude Include="include\Memory\PoolAllocator.h" />
     <ClInclude Include="include\Platform.h" />
     <ClInclude Include="include\Utilities\TypeIDCounter.h" />
+    <ClInclude Include="StackAllocator.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PoolAllocator.cpp" />
     <ClCompile Include="src\Utilities\TypeIDCounter.cpp" />
+    <ClCompile Include="StackAllocator.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
