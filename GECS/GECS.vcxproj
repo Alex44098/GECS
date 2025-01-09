@@ -36,6 +36,7 @@
     <ClInclude Include="include\Utilities\TypeIDCounter.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="PoolAllocator.cpp" />
     <ClCompile Include="src\Utilities\TypeIDCounter.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

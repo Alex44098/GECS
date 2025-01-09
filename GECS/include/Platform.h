@@ -46,6 +46,9 @@ namespace GECS {
 	using u64			= uint32_t;
 #endif
 
+	// Unsigned pointer
+	using uptr			= uintptr_t;
+
 	// Float
 	using f32			= float_t;
 	using f64			= double_t;

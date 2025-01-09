@@ -76,5 +76,8 @@
     <ClCompile Include="src\Utilities\TypeIDCounter.cpp">
       <Filter>Source files\Utilities</Filter>
     </ClCompile>
+    <ClCompile Include="PoolAllocator.cpp">
+      <Filter>Source files\Memory</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
