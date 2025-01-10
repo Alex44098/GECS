@@ -6,6 +6,7 @@ namespace GECS {
 	namespace Memory {
 		class PoolAllocator : public IAllocator {
 
+		private:
 			const size_t m_objectSize;
 			const u8 m_objectAlignment;
 			uptr* m_pool;
@@ -16,7 +17,7 @@ namespace GECS {
 
 			virtual ~PoolAllocator();
 
-			virtual uptr Allocate(size_t size, u8 alignment) override;
+			virtual uptr Allocate(size_t size, u8 align) override;
 			virtual void Free(uptr address) override;
 			virtual void Clear() override;
 		};

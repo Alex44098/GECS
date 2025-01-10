@@ -29,6 +29,7 @@ namespace GECS {
 		}
 
 		class IAllocator {
+
 		protected:
 			const size_t m_memorySize;
 			const uptr m_firstAddress;
@@ -38,7 +39,7 @@ namespace GECS {
 			IAllocator(const size_t memorySize, const uptr firstAddress);
 			virtual ~IAllocator();
 
-			virtual uptr Allocate(size_t size, u8 alignment);
+			virtual uptr Allocate(size_t size, u8 align);
 			virtual void Free(uptr address);
 			virtual void Clear();
 

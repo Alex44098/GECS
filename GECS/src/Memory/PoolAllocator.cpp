@@ -7,16 +7,16 @@ namespace GECS {
 			m_objectSize(objectSize),
 			m_objectAlignment(objectAlignment)
 		{
-			Clear();
+			this->Clear();
 		}
 
 		PoolAllocator::~PoolAllocator() {
 			this->m_pool = nullptr;
 		}
 
-		uptr PoolAllocator::Allocate(size_t size, u8 alignment) {
+		uptr PoolAllocator::Allocate(size_t size, u8 align) {
 			assert(size > 0 && "Pool allocator: size cant be 0");
-			assert(size == this->m_objectSize && alignment == this->m_objectAlignment && "Pool allocator: size and align should be standart");
+			assert(size == this->m_objectSize && align == this->m_objectAlignment && "Pool allocator: size and align should be standart");
 			assert(m_pool != nullptr && "Pool allocator: allocator not init");
 
 			uptr freeSlot = (uptr)this->m_pool;
