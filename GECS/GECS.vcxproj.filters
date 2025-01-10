@@ -56,7 +56,7 @@
     <ClInclude Include="include\Memory\ChunkAllocator.h">
       <Filter>Header files\Memory</Filter>
     </ClInclude>
-    <ClInclude Include="include\Memory\MemoryManager.h">
+    <ClInclude Include="include\Memory\GlobalMemoryManager.h">
       <Filter>Header files\Memory</Filter>
     </ClInclude>
     <ClInclude Include="include\Handle\Handle.h">

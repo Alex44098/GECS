@@ -9,8 +9,12 @@
 #include <assert.h>
 
 #include <vector>
+#include <list>
 #include <algorithm>
 #include <functional>
+
+// Setting global memory size
+#define GECS_GLOBAL_MEMORY_CAPACITY 134217728 // 128 MB
 
 // Creating ".dll" setting
 #ifdef GECS_FRAMEWORK  
