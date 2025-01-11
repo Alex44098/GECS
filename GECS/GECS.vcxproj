@@ -38,6 +38,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Memory\GlobalMemoryManager.cpp" />
+    <ClCompile Include="src\Memory\IAllocator.cpp" />
     <ClCompile Include="src\Memory\PoolAllocator.cpp" />
     <ClCompile Include="src\Memory\StackAllocator.cpp" />
     <ClCompile Include="src\Utilities\TypeIDCounter.cpp" />
