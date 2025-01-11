@@ -65,7 +65,7 @@
     <ClInclude Include="include\Handle\HandleManager.h">
       <Filter>Header files\Handle</Filter>
     </ClInclude>
-    <ClInclude Include="include\API.h">
+    <ClInclude Include="include\Facade.h">
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="include\Utilities\TypeIDCounter.h">
