@@ -91,5 +91,8 @@
     <ClCompile Include="src\Memory\IAllocator.cpp">
       <Filter>Source files\Memory</Filter>
     </ClCompile>
+    <ClCompile Include="src\Facade.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

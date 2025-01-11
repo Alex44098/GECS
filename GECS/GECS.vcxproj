@@ -37,6 +37,7 @@
     <ClInclude Include="include\Utilities\TypeIDCounter.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Facade.cpp" />
     <ClCompile Include="src\Memory\GlobalMemoryManager.cpp" />
     <ClCompile Include="src\Memory\IAllocator.cpp" />
     <ClCompile Include="src\Memory\PoolAllocator.cpp" />
