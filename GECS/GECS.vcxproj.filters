@@ -85,5 +85,8 @@
     <ClCompile Include="src\Memory\StackAllocator.cpp">
       <Filter>Source files\Memory</Filter>
     </ClCompile>
+    <ClCompile Include="src\Memory\GlobalMemoryManager.cpp">
+      <Filter>Source files\Memory</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

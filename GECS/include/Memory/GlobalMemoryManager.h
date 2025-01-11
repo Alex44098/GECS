@@ -7,6 +7,8 @@ namespace GECS {
 		class GlobalMemoryManager {
 
 		private:
+			uptr m_globalMemory;
+
 			StackAllocator* m_memoryAllocator;
 			std::vector<uptr> m_pendingAddresses;
 			std::list<uptr> m_releasedAddresses;
@@ -29,6 +31,7 @@ namespace GECS {
 
 				// checking whether the address is at the top of the stack
 				if (address == this->m_pendingAddresses.back()) {
+
 					// deallocate past memory allocation
 					this->m_memoryAllocator->Free(address);
 					this->m_pendingAddresses.pop_back();
