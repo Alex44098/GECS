@@ -14,7 +14,7 @@ namespace GECS {
 
 			template<class ObjectType>
 			static const type_id GetTypeId() {
-				static const type_id newTypeId { m_count++; }
+				static const type_id newTypeId { m_count++ };
 				return newTypeId;
 			}
 

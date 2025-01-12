@@ -40,7 +40,7 @@ namespace GECS {
 		void PoolAllocator::Clear() {
 			u8 offset = GetOffset(this->m_firstAddress, this->m_objectAlignment);
 
-			size_t numObjects = (size_t)floor((this->m_memorySize - offset) / this->m_objectSize);
+			size_t numObjects = (size_t)floor((static_cast<double>(this->m_memorySize) - offset) / this->m_objectSize);
 
 			this->m_pool = (uptr*)(this->m_firstAddress + offset);
 

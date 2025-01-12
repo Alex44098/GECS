@@ -39,9 +39,9 @@ namespace GECS {
 			IAllocator(const size_t memorySize, const uptr firstAddress);
 			virtual ~IAllocator();
 
-			virtual uptr Allocate(size_t size, u8 align);
-			virtual void Free(uptr address);
-			virtual void Clear();
+			virtual uptr Allocate(size_t size, u8 align) = 0;
+			virtual void Free(uptr address) = 0;
+			virtual void Clear() = 0;
 
 			inline size_t GetMemorySize() const {
 				return this->m_memorySize;
