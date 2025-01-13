@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Containers\ComponentContainer.h" />
     <ClInclude Include="include\Containers\EntityContainer.h" />
     <ClInclude Include="include\Facade.h" />
     <ClInclude Include="include\Component.h" />

@@ -39,9 +39,10 @@ namespace GECS {
 			entityTypeContainers[entityTypeID] = newContainer;
 		}
 		else
-			newContainer = (EntityContainer<T>*)container->second;
+			newContainer = static_cast<EntityContainer<T>*>(container->second);
 
 		assert(newContainer != nullptr && "Entity container: failed to create new type container!");
 		return newContainer;
 	}
+
 }
