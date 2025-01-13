@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Containers\EntityContainer.h" />
     <ClInclude Include="include\Facade.h" />
     <ClInclude Include="include\Component.h" />
     <ClInclude Include="include\ComponentManager.h" />
@@ -42,6 +43,7 @@
     <ClCompile Include="src\Memory\IAllocator.cpp" />
     <ClCompile Include="src\Memory\PoolAllocator.cpp" />
     <ClCompile Include="src\Memory\StackAllocator.cpp" />
+    <ClCompile Include="src\EntityManager.cpp" />
     <ClCompile Include="src\Utilities\TypeIDCounter.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

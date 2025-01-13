@@ -33,8 +33,8 @@ namespace GECS {
 
 		public:
 
-			HandleManager(size_t growTable) : m_growSize(growTable) {
-				GrowTable();
+			HandleManager() : m_growSize(HANDLE_MANAGER_GROW_SIZE) {
+				this->GrowTable();
 			}
 
 			handle_type GetHandle(T* p_object) {

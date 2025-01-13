@@ -30,7 +30,10 @@ namespace GECS {
 			std::list<MemoryChunk*> m_chunks;
 
 		public:
-			ChunkAllocator() {
+			ChunkAllocator(size_t maxObjects) {
+				this->m_maxObjects = maxObjects;
+				this->m_allocSize = (sizeof(T) + alignof(T)) * maxObjects;
+
 				PoolAllocator* allocator = new PoolAllocator(m_allocSize, m_globalMemManager->Allocate(m_allocSize), sizeof(T), alignof(T));
 				this->m_chunks.push_back(new MemoryChunk(allocator));
 			}

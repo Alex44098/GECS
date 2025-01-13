@@ -10,19 +10,16 @@
 
 #include <vector>
 #include <list>
+#include <unordered_map>
 #include <algorithm>
 #include <functional>
-
-// Setting global memory size
-#define GECS_GLOBAL_MEMORY_CAPACITY 134217728 // 128 MB
 
 // Creating ".dll" setting
 #ifdef GECS_FRAMEWORK  
 	#define GECS_API __declspec(dllexport)
 #else  
 	#define GECS_API __declspec(dllimport)
-#endif  
-
+#endif
 
 // Check for 64-bit system
 #if (defined(_WIN64) || defined(__x86_64__) || defined(__ppc64__) || defined(_M_AMD64) || defined(_M_ARM64) || defined(_M_X64))

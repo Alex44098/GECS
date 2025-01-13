@@ -24,6 +24,9 @@
     <Filter Include="Source files\Utilities">
       <UniqueIdentifier>{7f4a843d-c3a3-430b-8ecf-bc0f011cab72}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header files\Containers">
+      <UniqueIdentifier>{e122ec27-cb63-429e-8476-7e9021aa262b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Component.h">
@@ -74,6 +77,9 @@
     <ClInclude Include="include\Memory\StackAllocator.h">
       <Filter>Header files\Memory</Filter>
     </ClInclude>
+    <ClInclude Include="include\Containers\EntityContainer.h">
+      <Filter>Header files\Containers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Utilities\TypeIDCounter.cpp">
@@ -92,6 +98,9 @@
       <Filter>Source files\Memory</Filter>
     </ClCompile>
     <ClCompile Include="src\Facade.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\EntityManager.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
   </ItemGroup>

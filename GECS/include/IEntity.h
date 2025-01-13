@@ -9,7 +9,6 @@ namespace GECS {
 	protected:
 
 		Handle m_handle;
-		
 		ComponentManager* mp_componentManager;
 
 	public:

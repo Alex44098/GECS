@@ -15,8 +15,10 @@ namespace GECS {
 		/// <typeparam name="handle_type">Type of internal parameters</typeparam>
 		/// <typeparam name="version_bits">Amount of bits used for indexes</typeparam>
 		/// <typeparam name="index_bits">Amount of bits used for versions</typeparam>
-		template<typename value_type, size_t index_bits, size_t version_bits>
+		template<typename handle_value_type, size_t index_bits, size_t version_bits>
 		struct UniversalHandle {
+
+			using value_type = handle_value_type;
 
 			static constexpr value_type	MIN_VERSION{ 0 };
 			static constexpr value_type	MAX_VERSION{ (1U << version_bits) - 2U };
@@ -36,7 +38,7 @@ namespace GECS {
 				version(version)
 			{}
 
-			inline operator value_type() const { return value; }
+			inline operator value_type() const { return index; }
 		};
 	}
 
