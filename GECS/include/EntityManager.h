@@ -3,7 +3,6 @@
 #include "Facade.h"
 
 #include "Containers/EntityContainer.h"
-#include "Memory/ChunkAllocator.h"
 #include "Handle/HandleManager.h"
 
 namespace GECS {
@@ -26,13 +25,12 @@ namespace GECS {
 		// using a variadic template to pass arguments to an entity
 		template<class T, class... Arguments>
 		Handle CreateEntity(Arguments&&... args) {
-			uptr address = GetEntityContainer<T>()->CreateObject();
-
-			Handle entityHandle = this->GetNewHandle((T*)address);
-			((T*)address)->m_handle = entityHandle;
+			uptr address = GetEntityContainer<T>(m_entityTypeContainers)->CreateObject();
+			const Handle entityHandle = this->GetNewHandle((T*)address);
 
 			// creating an object at a dedicated address
 			IEntity* entity = new (address)T(std::forward<Arguments>(args)...);
+			entity->m_handle = entityHandle;
 			return entityHandle;
 		}
 

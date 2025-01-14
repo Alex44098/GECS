@@ -1,7 +1,64 @@
 #pragma once
 
+#include "Facade.h"
+
+#include "Handle/Handle.h"
+#include "Utilities/TypeIDCounter.h"
+#include "Containers/ComponentContainer.h"
+
 namespace GECS{
 	class ComponentManager {
+	private:
 
+		std::unordered_map<type_id, IComponentContainer*> m_componentTypeContainers;
+		std::vector<IComponent*> m_componentTableById;
+		std::vector<std::vector<object_id>> m_entityComponentsIdByTypes;
+
+		object_id GetNewId(IComponent* component);
+		void ReleaseId(object_id id);
+
+		void AttachComponentToEntity(Handle entityHandle, object_id componentId, type_id componentTypeId);
+		void DetachComponentToEntity(Handle entityHandle, object_id componentId, type_id componentTypeId);
+
+	public:
+
+		ComponentManager();
+		~ComponentManager();
+
+		template<class T, class... Arguments>
+		T* AddComponent(const Handle entityHandle, Arguments&&... args) {
+			uptr address = GetComponentContainer<T>(m_componentTypeContainers)->CreateObject();
+			const object_id componentId = this->GetNewId((T*)address);
+			
+			IComponent* component = new (address)T(std::forward<Arguments>(args)...);
+			component->m_componentID = componentId;
+			component->m_entityOwner = entityHandle;
+
+			AttachComponentToEntity(entityHandle, componentId, T::COMPONENT_TYPE_ID);
+
+			return static_cast<T*>(component);
+		}
+
+		template<class T>
+		void ReleaseComponent(const Handle entityHandle) {
+			const object_id componentId = this->m_entityComponentsIdByTypes[entityHandle.index][T::COMPONENT_TYPE_ID];
+			IComponent* component = this->m_componentTableById[componentId];
+
+			GetComponentContainer<T>(m_componentTypeContainers)->ReleaseComponent(component);
+			DetachComponentToEntity(entityHandle, componentId, T::COMPONENT_TYPE_ID);
+		}
+
+		template<class T>
+		T* GetComponent(const Handle entityHandle) {
+			const object_id componentId = this->m_entityComponentsIdByTypes[entityHandle.index][T::COMPONENT_TYPE_ID];
+
+			if (componentId == INVALID_OBJECT_ID) {
+				return nullptr;
+			}
+
+			return static_cast<T*>(this->m_componentTableById[componentId]);
+		}
+
+		void ReleaseAllComponents(const Handle entityHandle);
 	};
 }
