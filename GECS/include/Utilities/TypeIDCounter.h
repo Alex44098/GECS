@@ -18,7 +18,7 @@ namespace GECS {
 				return newTypeId;
 			}
 
-			static const type_id GetTypeId() {
+			static const type_id GetNumTypes() {
 				return m_count;
 			}
 		};

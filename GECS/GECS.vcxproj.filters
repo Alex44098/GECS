@@ -83,6 +83,12 @@
     <ClInclude Include="include\Containers\ComponentContainer.h">
       <Filter>Header files\Containers</Filter>
     </ClInclude>
+    <ClInclude Include="include\ISystem.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\System.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Utilities\TypeIDCounter.cpp">

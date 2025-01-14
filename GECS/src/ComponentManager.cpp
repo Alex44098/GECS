@@ -2,7 +2,7 @@
 
 namespace GECS {
 	ComponentManager::ComponentManager() {
-		static const size_t numComponents = Identifier::TypeIDCounter<IComponent>::GetTypeId();
+		static const size_t numComponents = Identifier::TypeIDCounter<IComponent>::GetNumTypes();
 
 		this->m_entityComponentsIdByTypes.resize(ENTITY_COMPONENT_TABLE_GROW_SIZE);
 		for (size_t i = 0; i < ENTITY_COMPONENT_TABLE_GROW_SIZE; i++) {
@@ -38,7 +38,7 @@ namespace GECS {
 		if ((this->m_entityComponentsIdByTypes.size() - 1) < entityHandle.index) {
 
 			// grow entity-component table for new entity
-			static const size_t numComponents = Identifier::TypeIDCounter<IComponent>::GetTypeId();
+			static const size_t numComponents = Identifier::TypeIDCounter<IComponent>::GetNumTypes();
 			size_t i = this->m_entityComponentsIdByTypes.size();
 			size_t newSize = i + ENTITY_COMPONENT_TABLE_GROW_SIZE;
 
@@ -57,7 +57,7 @@ namespace GECS {
 	}
 
 	void ComponentManager::ReleaseAllComponents(const Handle entityHandle) {
-		static const size_t numComponents = Identifier::TypeIDCounter<IComponent>::GetTypeId();
+		static const size_t numComponents = Identifier::TypeIDCounter<IComponent>::GetNumTypes();
 
 		for (type_id typeId = 0; typeId < numComponents; typeId++) {
 			const object_id componentId = this->m_entityComponentsIdByTypes[entityHandle.index][typeId];

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Facade.h"
+#include "Memory/GlobalMemoryManager.h"
 #include "Memory/PoolAllocator.h"
 
 namespace GECS {
@@ -21,7 +22,7 @@ namespace GECS {
 				uptr m_endAddress;
 
 				MemoryChunk(PoolAllocator* allocator) : m_allocator(allocator) {
-					this->m_startAddress = allocator->GetAddressBegining());
+					this->m_startAddress = allocator->GetAddressBegining();
 					this->m_endAddress = this->m_startAddress + m_allocSize;
 					this->m_objects.clear();
 				}
@@ -65,8 +66,8 @@ namespace GECS {
 						continue;
 
 					slot = chunk->m_allocator->Allocate(sizeof(T), alignof(T));
-					assert(slot != nullptr && "Chunk allocator: new object not created");
-					if (slot != nullptr) {
+					assert(slot != (uptr)nullptr && "Chunk allocator: new object not created");
+					if (slot != (uptr)nullptr) {
 						chunk->m_objects.push_back((T*)slot);
 						return slot;
 					}
@@ -79,7 +80,7 @@ namespace GECS {
 				this->m_chunks.push_front(newChunk);
 
 				slot = newChunk->m_allocator->Allocate(sizeof(T), alignof(T));
-				assert(slot != nullptr && "Chunk allocator: new object not created");
+				assert(slot != (uptr)nullptr && "Chunk allocator: new object not created");
 				newChunk->m_objects.clear();
 				newChunk->m_objects.push_back((T*)slot);
 			}

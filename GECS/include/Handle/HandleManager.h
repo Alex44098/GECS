@@ -47,10 +47,10 @@ namespace GECS {
 						this->m_table[i].second = p_object;
 						this->m_table[i].first =
 							this->m_table[i].first + 1 > handle_type::MAX_VERSION
-								? handle_type::MIN_VERISON
+								? handle_type::MIN_VERSION
 								: this->m_table[i].first + 1;
 
-						return handle_type(i, this->m_Table[i].first);
+						return handle_type(i, this->m_table[i].first);
 					}
 				}
 
@@ -59,27 +59,27 @@ namespace GECS {
 				this->m_table[i].first = 1;
 				this->m_table[i].second = p_object;
 
-				return handle_type(i, this->m_Table[i].first);
+				return handle_type(i, this->m_table[i].first);
 			}
 
 			void ReleaseHandle(handle_type handle) {
-				assert((handle.index < this->m_Table.size() &&
-						handle.version == this->m_Table[handle.index].first) &&
+				assert((handle.index < this->m_table.size() &&
+						handle.version == this->m_table[handle.index].first) &&
 						"Handle manager: Releasing error. Invalid handle!");
 
 				this->m_table[handle.index].second = nullptr;
 			}
 
 			inline handle_type operator[](typename handle_type::value_type index) const {
-				assert(index < this->m_Table.size() &&
+				assert(index < this->m_table.size() &&
 						"Handle manager: Index out of range!");
 
 				return handle_type(index, this->m_table[index].first);
 			}
 
 			inline T* operator[](handle_type handle) {
-				assert((handle.index < this->m_Table.size() &&
-						handle.version == this->m_Table[handle.index].first) &&
+				assert((handle.index < this->m_table.size() &&
+						handle.version == this->m_table[handle.index].first) &&
 						"Handle manager: Invalid handle!");
 
 				return this->m_table[handle.index].second;

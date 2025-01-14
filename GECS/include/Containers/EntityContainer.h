@@ -5,6 +5,8 @@
 #include "Facade.h"
 
 namespace GECS {
+	class ChunkAllocator;
+
 	class IEntityContainer {
 	public:
 		virtual ~IEntityContainer()

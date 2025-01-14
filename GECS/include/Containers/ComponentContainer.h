@@ -5,6 +5,8 @@
 #include "IComponent.h"
 
 namespace GECS {
+	class ChunkAllocator;
+
 	class IComponentContainer {
 	public:
 		virtual ~IComponentContainer()
