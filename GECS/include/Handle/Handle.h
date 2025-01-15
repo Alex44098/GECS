@@ -17,6 +17,7 @@ namespace GECS {
 		/// <typeparam name="index_bits">Amount of bits used for versions</typeparam>
 		template<typename handle_value_type, size_t index_bits, size_t version_bits>
 		struct UniversalHandle {
+			static_assert(sizeof(handle_value_type) * CHAR_BIT >= (version_bits + index_bits), "Handle: value type is too small!");
 
 			using value_type = handle_value_type;
 
@@ -24,14 +25,20 @@ namespace GECS {
 			static constexpr value_type	MAX_VERSION{ (1U << version_bits) - 2U };
 			static constexpr value_type	MAX_INDICES{ (1U << index_bits) - 2U };
 
-			static constexpr value_type	INVALID_HANDLE{ std::numeric_limits<value_type>::max() };
+			static constexpr value_type	INVALID_HANDLE{ 0 };
 
 		public:
 
 			value_type index;
 			value_type version;
 
-			UniversalHandle() {}
+			UniversalHandle()
+			{}
+
+			UniversalHandle(value_type indexVersionChecksum) :
+				index(indexVersionChecksum),
+				version(indexVersionChecksum)
+			{}
 
 			UniversalHandle(value_type index, value_type version) :
 				index(index),

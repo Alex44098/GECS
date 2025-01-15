@@ -13,7 +13,7 @@ namespace GECS {
 
 	public:
 
-		IEntity() {}
+		IEntity();
 
 		virtual ~IEntity();
 

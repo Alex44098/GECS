@@ -115,5 +115,14 @@
     <ClCompile Include="src\ComponentManager.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
+    <ClCompile Include="src\ISystem.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\IEntity.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\IComponent.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
