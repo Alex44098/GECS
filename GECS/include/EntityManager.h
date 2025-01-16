@@ -38,7 +38,7 @@ namespace GECS {
 			return this->m_entityHandleTable[handle];
 		}
 
-		inline Handle GetEntityHandle(Handle::value_type index) {
+		inline Handle GetEntityHandle(Handle::value_type index) const {
 			return this->m_entityHandleTable[index];
 		}
 

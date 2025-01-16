@@ -3,7 +3,8 @@
 namespace GECS {
 	namespace Memory {
 		StackAllocator::StackAllocator(size_t memorySize, const uptr firstAddress) :
-			IAllocator(memorySize, firstAddress)
+			IAllocator(memorySize, firstAddress),
+			m_currentPosition(firstAddress)
 		{
 			this->Clear();
 		}
@@ -15,7 +16,7 @@ namespace GECS {
 		uptr StackAllocator::Allocate(size_t size, u8 align) {
 			assert(size > 0 && "Stack allocator: size cant be 0");
 			
-			u8 offsetWithHeader = GetOffsetWithHeader(m_firstAddress, align, sizeof(StackAllocatorHeader));
+			u8 offsetWithHeader = GetOffsetWithHeader(m_currentPosition, align, sizeof(StackAllocatorHeader));
 			uptr alignedAddress = this->m_currentPosition + offsetWithHeader;
 
 			StackAllocatorHeader* header = (StackAllocatorHeader*)(alignedAddress - sizeof(StackAllocatorHeader));
