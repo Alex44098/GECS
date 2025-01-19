@@ -95,6 +95,9 @@
     <ClInclude Include="include\Memory\LinearAllocator.h">
       <Filter>Header files\Memory</Filter>
     </ClInclude>
+    <ClInclude Include="include\Utilities\SystemOrderBuilder.h">
+      <Filter>Header files\Utilities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Utilities\TypeIDCounter.cpp">
@@ -132,6 +135,9 @@
     </ClCompile>
     <ClCompile Include="src\Memory\LinearAllocator.cpp">
       <Filter>Source files\Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SystemManager.cpp">
+      <Filter>Source files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

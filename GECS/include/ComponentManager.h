@@ -12,6 +12,10 @@ namespace GECS{
 
 		std::unordered_map<type_id, IComponentContainer*> m_componentTypeContainers;
 		std::vector<IComponent*> m_componentTableById;
+
+		// Contains components' id. 
+		// Access by the index of the entity descriptor (Handle)
+		// and the component type ID.
 		std::vector<std::vector<object_id>> m_entityComponentsIdByTypes;
 
 		object_id GetNewId(IComponent* component);
@@ -30,6 +34,7 @@ namespace GECS{
 			uptr address = GetComponentContainer<T>(m_componentTypeContainers)->CreateObject();
 			const object_id componentId = this->GetNewId((T*)address);
 			
+			// creating an object at a dedicated address
 			IComponent* component = new (address)T(std::forward<Arguments>(args)...);
 			component->m_componentID = componentId;
 			component->m_entityOwner = entityHandle;

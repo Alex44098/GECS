@@ -5,6 +5,9 @@
 // Setting global memory size
 #define GECS_GLOBAL_MEMORY_CAPACITY 134217728 // 128 MB
 
+// Setting system manager memory size
+#define GECS_SYSTEM_MANAGER_MEMORY_CAPACITY 8388608 // 8 MB
+
 // Chunks settings
 #define ENTITY_CONTAINER_CHUNK_MAX_OBJECTS 512
 #define COMPONENT_CONTAINER_CHUNK_MAX_OBJECTS 512
