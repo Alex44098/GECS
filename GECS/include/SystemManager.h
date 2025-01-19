@@ -9,7 +9,7 @@ namespace GECS {
 	class SystemManager {
 	private:
 		Memory::LinearAllocator* m_allocator;
-		std::unordered_map<const type_id, ISystem*> m_systemsTable;
+		std::unordered_map<type_id, ISystem*> m_systemsTable;
 		std::vector<type_id> m_systemsOrder;
 		std::vector<std::vector<bool>> m_systemDependencies;
 		
@@ -54,7 +54,7 @@ namespace GECS {
 			const type_id systemId = system->GetSystemTypeID();
 			const type_id dependencyId = dependency->GetSystemTypeID();
 
-			this->m_SystemDependencyMatrix[systemId][dependencyId] = true;
+			this->m_systemDependencies[systemId][dependencyId] = true;
 		}
 
 		template<class T>

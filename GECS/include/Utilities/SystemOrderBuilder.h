@@ -11,7 +11,7 @@ namespace GECS {
 			used[vertex] = true;
 
 			for (u64 i = 0; i < used.size(); i++)
-				if (graph[i][vertex] > 0 && !used[i])
+				if (graph[i][vertex] == true && !used[i])
 					DFSWithSort(i, used, graph, output);
 
 			output.push_back(vertex);
@@ -25,7 +25,7 @@ namespace GECS {
 					DFSWithCompNum(i, compNum, comp, graph);
 		}
 
-		void DefineSystemGroups(std::vector<std::vector<type_id>>& systemGroups, std::vector<std::vector<bool>>& systemGraph) {
+		void DefineSystemGroups(std::vector<std::vector<type_id>>& systemGroups, const std::vector<std::vector<bool>>& systemGraph) {
 			u64 groupNum = 1, numSystems = systemGraph.size();
 			std::vector<u64> comp(numSystems, 0);
 
@@ -46,17 +46,17 @@ namespace GECS {
 			}
 		}
 
-		void DefineGroupPriority(std::vector<std::vector<type_id>>& systemGroups, std::vector<u8>& groupPriority, std::unordered_map<const type_id, ISystem*>& systemsTable) {
+		void DefineGroupPriority(std::vector<std::vector<type_id>>& systemGroups, std::vector<u8>& groupPriority, const std::unordered_map<type_id, ISystem*>& systemsTable) {
 			for (std::vector<type_id> group : systemGroups) {
 				u8 maxGroupPriority = LOWEST_SYSTEM_PRIORITY;
 				for (type_id systemId : group) {
-					maxGroupPriority = std::max(systemsTable[systemId]->m_priority, maxGroupPriority);
+					maxGroupPriority = std::max(systemsTable.at(systemId)->m_priority, maxGroupPriority);
 				}
 				groupPriority.push_back(maxGroupPriority);
 			}
 		}
 
-		void BuildSystemOrder(std::vector<type_id>& systemsOrder, std::unordered_map<const type_id, ISystem*>& systemsTable, std::vector<std::vector<bool>>& systemGraph) {
+		void BuildSystemOrder(std::vector<type_id>& systemsOrder, const std::unordered_map<type_id, ISystem*>& systemsTable, const std::vector<std::vector<bool>>& systemGraph) {
 			std::vector<std::vector<type_id>> systemGroups;
 			std::vector<u8> groupPriority;
 
@@ -64,18 +64,23 @@ namespace GECS {
 			DefineGroupPriority(systemGroups, groupPriority, systemsTable);
 
 			std::vector<bool> used(systemGraph.size(), false);
+
+			// sorted map with multiple entries (systems group) with the same priority
+			// contains pairs of priority and systems' ID
 			std::multimap<u8, std::vector<type_id>> sortedSystemsOrder;
 
 			for (int i = 0; i < systemGroups.size(); i++) {
 				std::vector<type_id> group = systemGroups[i];
 				std::vector<type_id> orderedGroup;
 
+				// topological sorting of systems group
 				for (int j = 0; j < group.size(); j++)
 					if (used[group[j]] == false)
 						DFSWithSort(group[j], used, systemGraph, orderedGroup);
 
 				std::reverse(orderedGroup.begin(), orderedGroup.end());
 
+				// reverse systems' priority for correct sorting (form high priority to low)
 				sortedSystemsOrder.insert(std::pair<u8, std::vector<type_id>>(HIGHEST_SYSTEM_PRIORITY - groupPriority[i], orderedGroup));
 			}
 
