@@ -98,6 +98,9 @@
     <ClInclude Include="include\Utilities\SystemOrderBuilder.h">
       <Filter>Header files\Utilities</Filter>
     </ClInclude>
+    <ClInclude Include="include\Utilities\EngineTimer.h">
+      <Filter>Header files\Utilities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Utilities\TypeIDCounter.cpp">
@@ -138,6 +141,9 @@
     </ClCompile>
     <ClCompile Include="src\SystemManager.cpp">
       <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilities\EngineTimer.cpp">
+      <Filter>Source files\Utilities</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -40,6 +40,7 @@
     <ClInclude Include="include\Platform.h" />
     <ClInclude Include="include\System.h" />
     <ClInclude Include="include\SystemManager.h" />
+    <ClInclude Include="include\Utilities\EngineTimer.h" />
     <ClInclude Include="include\Utilities\SystemOrderBuilder.h" />
     <ClInclude Include="include\Utilities\TypeIDCounter.h" />
   </ItemGroup>
@@ -56,6 +57,7 @@
     <ClCompile Include="src\Memory\StackAllocator.cpp" />
     <ClCompile Include="src\EntityManager.cpp" />
     <ClCompile Include="src\SystemManager.cpp" />
+    <ClCompile Include="src\Utilities\EngineTimer.cpp" />
     <ClCompile Include="src\Utilities\TypeIDCounter.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
