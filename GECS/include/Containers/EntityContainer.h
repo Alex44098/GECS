@@ -16,9 +16,9 @@ namespace GECS {
 	};
 
 	template<class T>
-	class EntityContainer : public Memory::ChunkAllocator<T>, public IEntityContainer {
+	class EntityContainer : public Memory::ChunkAllocator<T, ENTITY_CONTAINER_CHUNK_MAX_OBJECTS>, public IEntityContainer {
 	public:
-		EntityContainer() : ChunkAllocator(ENTITY_CONTAINER_CHUNK_MAX_OBJECTS)
+		EntityContainer() : ChunkAllocator()
 		{}
 
 		virtual ~EntityContainer()
@@ -26,7 +26,7 @@ namespace GECS {
 
 		virtual void ReleaseEntity(IEntity* entity) override {
 			entity->~IEntity();
-			this->ReleaseObject(entity);
+			this->ReleaseObject((uptr)entity);
 		}
 	};
 

@@ -16,6 +16,10 @@ namespace GECS {
 
 			void Tick(f32 delta);
 			void Reset();
+
+			inline f32 GetTime() const {
+				return this->m_elapsedTime.count();
+			}
 		};
 	}
 }

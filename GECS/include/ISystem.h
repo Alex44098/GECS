@@ -33,12 +33,18 @@ namespace GECS {
 
 		virtual inline const type_id GetSystemTypeId() const = 0;
 
-		virtual inline void IncreaseTimeSinceUpdate(f32 delta) = 0;
-
-		virtual inline void ResetTimeSinceUpdate() = 0;
-
-		virtual inline bool IsExpired() = 0;
-
 		virtual void Update(f32 elapsedTime) = 0;
+
+		inline void IncreaseTimeSinceUpdate(f32 delta) {
+			this->m_timeSinceLastUpdate += delta;
+		}
+
+		inline void ResetTimeSinceUpdate() {
+			this->m_timeSinceLastUpdate = 0;
+		}
+
+		inline bool IsExpired() {
+			return this->m_updateTime < 0.0f || (this->m_updateTime > 0.0f && this->m_timeSinceLastUpdate > this->m_updateTime);
+		}
 	};
 }

@@ -29,8 +29,9 @@ namespace GECS {
 			const Handle entityHandle = this->GetNewHandle((T*)address);
 
 			// creating an object at a dedicated address
-			IEntity* entity = new (address)T(std::forward<Arguments>(args)...);
-			entity->m_handle = entityHandle;
+			IEntity* entity = new (reinterpret_cast<void*>(address))T(std::forward<Arguments>(args)...);
+			entity->SetEntityHandle(entityHandle);
+
 			return entityHandle;
 		}
 

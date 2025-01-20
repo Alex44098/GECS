@@ -21,6 +21,10 @@ namespace GECS {
 			return this->m_handle;
 		}
 
+		inline void SetEntityHandle(Handle handle) {
+			this->m_handle = handle;
+		}
+
 		virtual inline const type_id GetEntityTypeId() const = 0;
 	};
 }

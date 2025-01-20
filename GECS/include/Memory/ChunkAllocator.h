@@ -6,13 +6,12 @@
 
 namespace GECS {
 	namespace Memory {
-		template<class T>
-		class ChunkAllocator
-		{
+		template<class T, size_t MAX_OBJECTS>
+		class ChunkAllocator {
 
 		private:
-			static const size_t m_maxObjects;
-			static const size_t m_allocSize;
+			static const size_t m_maxObjects = MAX_OBJECTS;
+			static const size_t m_allocSize = (sizeof(T) + alignof(T)) * MAX_OBJECTS;
 
 			class MemoryChunk {
 			public:
@@ -31,26 +30,23 @@ namespace GECS {
 			std::list<MemoryChunk*> m_chunks;
 
 		public:
-			ChunkAllocator(size_t maxObjects) {
-				this->m_maxObjects = maxObjects;
-				this->m_allocSize = (sizeof(T) + alignof(T)) * maxObjects;
-
+			ChunkAllocator() {
 				PoolAllocator* allocator = new PoolAllocator(m_allocSize, m_globalMemManager->Allocate(m_allocSize), sizeof(T), alignof(T));
 				this->m_chunks.push_back(new MemoryChunk(allocator));
 			}
 
 			~ChunkAllocator() {
 				// free all chunks
-				for (MemoryChunk chunk : this->m_chunks) {
+				for (MemoryChunk* chunk : this->m_chunks) {
 					// release all objects
-					for (T object : chunk->m_objects) {
+					for (T* object : chunk->m_objects) {
 						((T*)object)->~T();
 					}
 
 					chunk->m_objects.clear();
 
 					// release memory, allocated for allocator in chunk
-					m_globalMemManager->Free((void*)chunk->m_allocator->GetAddressBegining());
+					m_globalMemManager->Free(chunk->m_allocator->GetAddressBegining());
 					delete chunk->m_allocator;
 
 					delete chunk;
@@ -59,9 +55,9 @@ namespace GECS {
 			}
 
 			uptr CreateObject() {
-				uptr slot = nullptr;
+				uptr slot = (uptr)nullptr;
 
-				for (MemoryChunk chunk : this->m_chunks) {
+				for (MemoryChunk* chunk : this->m_chunks) {
 					if (chunk->m_objects.size() > m_maxObjects)
 						continue;
 
@@ -86,7 +82,7 @@ namespace GECS {
 			}
 
 			void ReleaseObject(uptr address) {
-				for (MemoryChunk chunk : this->m_chunks) {
+				for (MemoryChunk* chunk : this->m_chunks) {
 					if (chunk->m_startAddress <= address && address < chunk->m_endAddress) {
 						chunk->m_objects.remove((T*)address);
 						chunk->m_allocator->Free(address);

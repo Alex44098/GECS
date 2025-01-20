@@ -9,16 +9,4 @@ namespace GECS {
 
 	ISystem::~ISystem()
 	{}
-
-	void ISystem::IncreaseTimeSinceUpdate(f32 delta) {
-		this->m_timeSinceLastUpdate += delta;
-	}
-
-	void ISystem::ResetTimeSinceUpdate() {
-		this->m_timeSinceLastUpdate = 0;
-	}
-
-	bool ISystem::IsExpired() {
-		return this->m_updateTime < 0.0f || (this->m_updateTime > 0.0f && this->m_timeSinceLastUpdate > this->m_updateTime);
-	}
 }
