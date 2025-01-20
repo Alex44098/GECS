@@ -4,6 +4,7 @@
 #include "EntityManager.h"
 #include "IEntity.h"
 #include "Entity.h"
+#include "Facade.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -39,6 +40,38 @@ namespace GECS
 			em.DestroyReleasedEntities();
 		}
 
+		TEST_METHOD(EntityCreationWithParams) {
+			class GameObjectFoo : public Entity<GameObjectFoo> {
+				int foo1, foo2;
+			public:
+				GameObjectFoo(int foo1, int foo2) {
+					this->foo1 = foo1;
+					this->foo2 = foo2;
+				}
+				virtual ~GameObjectFoo() {}
+
+				int GetFoo1() {
+					return this->foo1;
+				}
+
+				int GetFoo2() {
+					return this->foo2;
+				}
+			};
+
+			EntityManager em;
+			Handle eh = em.CreateEntity<GameObjectFoo>(5, 10);
+
+			GameObjectFoo* en = (GameObjectFoo*)em.GetEntity(eh);
+
+			Assert::AreEqual(en->GetEntityHandle(), eh);
+			Assert::AreEqual(en->GetFoo1(), 5);
+			Assert::AreEqual(en->GetFoo2(), 10);
+
+			em.ReleaseEntity(eh);
+			em.DestroyReleasedEntities();
+		}
+
 		TEST_METHOD(EntityTypeId) {
 			class GameObject1 : public Entity<GameObject1> {
 			public:
@@ -60,8 +93,8 @@ namespace GECS
 			IEntity* en2 = em.GetEntity(eh2);
 
 			Assert::AreNotEqual(en1->GetEntityTypeId(), en2->GetEntityTypeId());
-			Assert::AreEqual(1, (int)en1->GetEntityTypeId());
-			Assert::AreEqual(2, (int)en2->GetEntityTypeId());
+			Assert::AreEqual(2, (int)en1->GetEntityTypeId());
+			Assert::AreEqual(3, (int)en2->GetEntityTypeId());
 
 			em.ReleaseEntity(eh1);
 			em.ReleaseEntity(eh2);
