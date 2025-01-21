@@ -10,14 +10,14 @@ namespace GECS {
 			uptr asUintPtr;
 		};
 
-		inline u8 GetOffset(uptr addr, size_t align) {
-			const size_t mask = align - 1;
-			assert((align & mask) == 0 && "Allocator: power of 2");
+		inline u8 GetOffset(uptr addr, u8 align) {
+			const u8 mask = align - 1;
+			assert((align & mask) == 0 && "Allocator: not power of 2");
 			const u8 offset = align - (addr & mask);
 			return offset == align ? 0 : offset;
 		}
 
-		inline u8 GetOffsetWithHeader(uptr addr, size_t align, size_t headerSize) {
+		inline u8 GetOffsetWithHeader(uptr addr, u8 align, u8 headerSize) {
 			u8 offset = GetOffset(addr, align);
 			if (offset < headerSize) {
 				headerSize -= offset;

@@ -1,9 +1,10 @@
 #include "EntityManager.h"
 
 namespace GECS {
-	EntityManager::EntityManager() :
+	EntityManager::EntityManager(ComponentManager* componentManagerSingleton) :
 		m_releasedEntities(1024),
-		m_numReleasedEntities(0)
+		m_numReleasedEntities(0),
+		m_componentManagerSingleton(componentManagerSingleton)
 	{}
 
 	EntityManager::~EntityManager() {

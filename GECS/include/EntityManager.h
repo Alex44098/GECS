@@ -15,11 +15,14 @@ namespace GECS {
 		std::vector<Handle> m_releasedEntities;
 		size_t m_numReleasedEntities;
 
+		// ComponentManager singleton for entities
+		ComponentManager* m_componentManagerSingleton;
+
 		Handle GetNewHandle(IEntity* entity);
 		void ReleaseHandle(Handle handle);
 
 	public:
-		EntityManager();
+		EntityManager(ComponentManager* componentManagerSingleton);
 		~EntityManager();
 
 		// using a variadic template to pass arguments to an entity
@@ -30,7 +33,8 @@ namespace GECS {
 
 			// creating an object at a dedicated address
 			IEntity* entity = new (reinterpret_cast<void*>(address))T(std::forward<Arguments>(args)...);
-			entity->SetEntityHandle(entityHandle);
+			entity->m_handle = entityHandle;
+			entity->m_componentManagerSingleton = m_componentManagerSingleton;
 
 			return entityHandle;
 		}

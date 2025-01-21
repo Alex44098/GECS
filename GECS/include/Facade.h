@@ -22,6 +22,7 @@
 namespace GECS {
 	class EntityManager;
 	class ComponentManager;
+	class SystemManager;
 
 	namespace Memory {
 		class GlobalMemoryManager;

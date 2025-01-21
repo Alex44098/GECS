@@ -3,13 +3,17 @@
 #include "Facade.h"
 #include "Handle/Handle.h"
 
+#include "ComponentManager.h"
+
 namespace GECS {
 	class IEntity {
+
+		friend class EntityManager;
 
 	protected:
 
 		Handle m_handle;
-		ComponentManager* mp_componentManager;
+		ComponentManager* m_componentManagerSingleton;
 
 	public:
 
@@ -21,10 +25,21 @@ namespace GECS {
 			return this->m_handle;
 		}
 
-		inline void SetEntityHandle(Handle handle) {
-			this->m_handle = handle;
+		virtual inline const type_id GetEntityTypeId() const = 0;
+
+		template<class T>
+		T* GetComponent() const {
+			return this->m_componentManagerSingleton->GetComponent<T>(this->m_handle);
 		}
 
-		virtual inline const type_id GetEntityTypeId() const = 0;
+		template<class T, class... Arguments>
+		T* AddComponent(Arguments&&... args) {
+			return this->m_componentManagerSingleton->AddComponent<T>(this->m_handle, std::forward<Arguments>(args)...);
+		}
+
+		template<class T>
+		void RemoveComponent() {
+			this->m_componentManagerSingleton->ReleaseComponent<T>(this->m_handle);
+		}
 	};
 }

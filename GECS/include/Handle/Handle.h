@@ -29,8 +29,8 @@ namespace GECS {
 
 		public:
 
-			value_type index;
-			value_type version;
+			value_type index : index_bits;
+			value_type version : version_bits;
 
 			UniversalHandle()
 			{}

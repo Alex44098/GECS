@@ -29,15 +29,20 @@ namespace GECS
 				virtual ~GameObject() {}
 			};
 
-			EntityManager em;
-			Handle eh = em.CreateEntity<GameObject>();
+			ComponentManager* cm = new ComponentManager();
+			EntityManager* em = new EntityManager(cm);
 
-			IEntity* en = em.GetEntity(eh);
+			Handle eh = em->CreateEntity<GameObject>();
+
+			IEntity* en = em->GetEntity(eh);
 			
 			Assert::AreEqual(en->GetEntityHandle(), eh);
 
-			em.ReleaseEntity(eh);
-			em.DestroyReleasedEntities();
+			em->ReleaseEntity(eh);
+			em->DestroyReleasedEntities();
+
+			delete em;
+			delete cm;
 		}
 
 		TEST_METHOD(EntityCreationWithParams) {
@@ -59,17 +64,22 @@ namespace GECS
 				}
 			};
 
-			EntityManager em;
-			Handle eh = em.CreateEntity<GameObjectFoo>(5, 10);
+			ComponentManager* cm = new ComponentManager();
+			EntityManager* em = new EntityManager(cm);
 
-			GameObjectFoo* en = (GameObjectFoo*)em.GetEntity(eh);
+			Handle eh = em->CreateEntity<GameObjectFoo>(5, 10);
+
+			GameObjectFoo* en = (GameObjectFoo*)em->GetEntity(eh);
 
 			Assert::AreEqual(en->GetEntityHandle(), eh);
 			Assert::AreEqual(en->GetFoo1(), 5);
 			Assert::AreEqual(en->GetFoo2(), 10);
 
-			em.ReleaseEntity(eh);
-			em.DestroyReleasedEntities();
+			em->ReleaseEntity(eh);
+			em->DestroyReleasedEntities();
+
+			delete cm;
+			delete em;
 		}
 
 		TEST_METHOD(EntityTypeId) {
@@ -85,20 +95,25 @@ namespace GECS
 				virtual ~GameObject2() {}
 			};
 
-			EntityManager em;
-			Handle eh1 = em.CreateEntity<GameObject1>();
-			Handle eh2 = em.CreateEntity<GameObject2>();
+			ComponentManager* cm = new ComponentManager();
+			EntityManager* em = new EntityManager(cm);
 
-			IEntity* en1 = em.GetEntity(eh1);
-			IEntity* en2 = em.GetEntity(eh2);
+			Handle eh1 = em->CreateEntity<GameObject1>();
+			Handle eh2 = em->CreateEntity<GameObject2>();
+
+			IEntity* en1 = em->GetEntity(eh1);
+			IEntity* en2 = em->GetEntity(eh2);
 
 			Assert::AreNotEqual(en1->GetEntityTypeId(), en2->GetEntityTypeId());
 			Assert::AreEqual(2, (int)en1->GetEntityTypeId());
 			Assert::AreEqual(3, (int)en2->GetEntityTypeId());
 
-			em.ReleaseEntity(eh1);
-			em.ReleaseEntity(eh2);
-			em.DestroyReleasedEntities();
+			em->ReleaseEntity(eh1);
+			em->ReleaseEntity(eh2);
+			em->DestroyReleasedEntities();
+
+			delete cm;
+			delete em;
 		}
 	};
 }
