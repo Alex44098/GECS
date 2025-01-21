@@ -31,10 +31,12 @@ namespace GECS {
 			uptr address = GetEntityContainer<T>(m_entityTypeContainers)->CreateObject();
 			const Handle entityHandle = this->GetNewHandle((T*)address);
 
+			// IMPORTANT TO FILL FIELDS BEFORE ENTITY CREATION
+			((T*)address)->m_handle = entityHandle;
+			((T*)address)->m_componentManagerSingleton = m_componentManagerSingleton;
+
 			// creating an object at a dedicated address
 			IEntity* entity = new (reinterpret_cast<void*>(address))T(std::forward<Arguments>(args)...);
-			entity->m_handle = entityHandle;
-			entity->m_componentManagerSingleton = m_componentManagerSingleton;
 
 			return entityHandle;
 		}

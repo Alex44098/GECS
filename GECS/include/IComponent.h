@@ -6,6 +6,8 @@ namespace GECS {
 	static const object_id INVALID_COMPONENT_ID = INVALID_OBJECT_ID;
 
 	class IComponent {
+
+		friend class ComponentManager;
 	
 	protected:
 

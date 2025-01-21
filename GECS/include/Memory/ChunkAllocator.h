@@ -62,11 +62,12 @@ namespace GECS {
 						continue;
 
 					slot = chunk->m_allocator->Allocate(sizeof(T), alignof(T));
-					assert(slot != (uptr)nullptr && "Chunk allocator: new object not created");
 					if (slot != (uptr)nullptr) {
 						chunk->m_objects.push_back((T*)slot);
 						return slot;
 					}
+					else
+						assert(false && "Chunk allocator: new object not created");
 				}
 
 				// creating new chunk

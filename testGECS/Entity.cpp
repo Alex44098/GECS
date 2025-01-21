@@ -2,7 +2,6 @@
 #include "CppUnitTest.h"
 
 #include "EntityManager.h"
-#include "IEntity.h"
 #include "Entity.h"
 #include "Facade.h"
 
@@ -105,8 +104,11 @@ namespace GECS
 			IEntity* en2 = em->GetEntity(eh2);
 
 			Assert::AreNotEqual(en1->GetEntityTypeId(), en2->GetEntityTypeId());
-			Assert::AreEqual(2, (int)en1->GetEntityTypeId());
-			Assert::AreEqual(3, (int)en2->GetEntityTypeId());
+			Assert::AreEqual(3, (int)en1->GetEntityTypeId());
+			Assert::AreEqual(4, (int)en2->GetEntityTypeId());
+
+			Assert::AreEqual(en1->GetEntityTypeId(), GameObject1::ENTITY_TYPE_ID);
+			Assert::AreEqual(en2->GetEntityTypeId(), GameObject2::ENTITY_TYPE_ID);
 
 			em->ReleaseEntity(eh1);
 			em->ReleaseEntity(eh2);

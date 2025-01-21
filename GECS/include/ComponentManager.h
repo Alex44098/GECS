@@ -35,7 +35,7 @@ namespace GECS{
 			const object_id componentId = this->GetNewId((T*)address);
 			
 			// creating an object at a dedicated address
-			IComponent* component = new (address)T(std::forward<Arguments>(args)...);
+			IComponent* component = new (reinterpret_cast<void*>(address))T(std::forward<Arguments>(args)...);
 			component->m_componentID = componentId;
 			component->m_entityOwner = entityHandle;
 

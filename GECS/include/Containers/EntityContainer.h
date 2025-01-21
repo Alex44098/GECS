@@ -31,7 +31,7 @@ namespace GECS {
 	};
 
 	template<class T>
-	inline EntityContainer<T>* GetEntityContainer(std::unordered_map<type_id, IEntityContainer*> entityTypeContainers) {
+	inline EntityContainer<T>* GetEntityContainer(std::unordered_map<type_id, IEntityContainer*>& entityTypeContainers) {
 		type_id entityTypeID = T::ENTITY_TYPE_ID;
 		auto container = entityTypeContainers.find(entityTypeID);
 		EntityContainer<T>* newContainer = nullptr;

@@ -26,12 +26,12 @@ namespace GECS {
 
 		virtual void ReleaseComponent(IComponent* component) override {
 			component->~IComponent();
-			this->ReleaseObject(component);
+			this->ReleaseObject((uptr)component);
 		}
 	};
 
 	template<class T>
-	inline ComponentContainer<T>* GetComponentContainer(std::unordered_map<type_id, IComponentContainer*> componentTypeContainers) {
+	inline ComponentContainer<T>* GetComponentContainer(std::unordered_map<type_id, IComponentContainer*>& componentTypeContainers) {
 		type_id componentTypeID = T::COMPONENT_TYPE_ID;
 		auto container = componentTypeContainers.find(componentTypeID);
 		ComponentContainer<T>* newContainer = nullptr;

@@ -4,18 +4,19 @@
 namespace GECS {
 	template<class T>
 	class Component : public IComponent {
-
-		static const type_id COMPONENT_TYPE_ID;
-
 		// Component manager responsible for deleting
 		void operator delete(void*) = delete;
 		void operator delete[](void*) = delete;
+
+	public:
+
+		static const type_id COMPONENT_TYPE_ID;
 
 		Component() {}
 
 		virtual ~Component() {}
 
-		inline ComponentTypeId GetStaticComponentTypeID() const
+		inline type_id GetStaticComponentTypeID() const
 		{
 			return STATIC_COMPONENT_TYPE_ID;
 		}
