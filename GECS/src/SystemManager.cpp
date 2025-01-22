@@ -33,4 +33,8 @@ namespace GECS {
 	void SystemManager::RebuildSystemsOrder() {
 		Util::BuildSystemOrder(this->m_systemsOrder, this->m_systemsTable, this->m_systemDependencies);
 	}
+
+	std::vector<type_id> SystemManager::GetSystemsOrder() {
+		return this->m_systemsOrder;
+	}
 }

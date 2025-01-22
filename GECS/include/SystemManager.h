@@ -92,5 +92,7 @@ namespace GECS {
 		}
 
 		void RebuildSystemsOrder();
+
+		std::vector<type_id> GetSystemsOrder();
 	};
 }

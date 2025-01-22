@@ -144,11 +144,18 @@ namespace GECS
 
 			sm->RebuildSystemsOrder();
 
-			sm->Update(0.f);
-			sm->Update(0.f);
-			sm->Update(0.f);
+			std::vector<type_id> order = sm->GetSystemsOrder();
 
-			Assert::AreEqual(gs7->GetFoo(), 3);
+			Assert::AreEqual(9, (int)order[0]);
+			Assert::AreEqual(6, (int)order[1]);
+			Assert::AreEqual(7, (int)order[2]);
+			Assert::AreEqual(2, (int)order[3]);
+			Assert::AreEqual(1, (int)order[4]);
+			Assert::AreEqual(8, (int)order[5]);
+			Assert::AreEqual(5, (int)order[6]);
+			Assert::AreEqual(4, (int)order[7]);
+			Assert::AreEqual(3, (int)order[8]);
+			Assert::AreEqual(0, (int)order[9]);
 
 			delete sm;
 		}
