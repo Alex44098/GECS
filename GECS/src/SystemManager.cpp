@@ -20,7 +20,7 @@ namespace GECS {
 		for (type_id systemId : this->m_systemsOrder) {
 			ISystem* system = this->m_systemsTable[systemId];
 			
-			system->IncreaseTimeSinceUpdate(delta);
+			system->m_timeSinceLastUpdate += delta;
 			bool isExpired = system->IsExpired();
 
 			if (system->m_enabled && isExpired) {

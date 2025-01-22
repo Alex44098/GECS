@@ -46,17 +46,18 @@ namespace GECS {
 			}
 		}
 
-		void DefineGroupPriority(std::vector<std::vector<type_id>>& systemGroups, std::vector<u8>& groupPriority, const std::unordered_map<type_id, ISystem*>& systemsTable) {
+		void DefineGroupPriority(std::vector<std::vector<type_id>>& systemGroups, std::vector<u8>& groupPriority, std::unordered_map<type_id, ISystem*>& systemsTable) {
 			for (std::vector<type_id> group : systemGroups) {
 				u8 maxGroupPriority = LOWEST_SYSTEM_PRIORITY;
 				for (type_id systemId : group) {
-					maxGroupPriority = std::max(systemsTable.at(systemId)->m_priority, maxGroupPriority);
+					u8 sysPriority = systemsTable[systemId] == nullptr ? LOWEST_SYSTEM_PRIORITY : systemsTable[systemId]->m_priority;
+					maxGroupPriority = sysPriority > maxGroupPriority ? sysPriority : maxGroupPriority;
 				}
 				groupPriority.push_back(maxGroupPriority);
 			}
 		}
 
-		void BuildSystemOrder(std::vector<type_id>& systemsOrder, const std::unordered_map<type_id, ISystem*>& systemsTable, const std::vector<std::vector<bool>>& systemGraph) {
+		void BuildSystemOrder(std::vector<type_id>& systemsOrder, std::unordered_map<type_id, ISystem*>& systemsTable, const std::vector<std::vector<bool>>& systemGraph) {
 			std::vector<std::vector<type_id>> systemGroups;
 			std::vector<u8> groupPriority;
 

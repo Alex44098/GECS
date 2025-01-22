@@ -12,12 +12,13 @@ namespace GECS {
 		std::unordered_map<type_id, ISystem*> m_systemsTable;
 		std::vector<type_id> m_systemsOrder;
 		std::vector<std::vector<bool>> m_systemDependencies;
-		
-		void Update(f32 delta);
 
 	public:
+
 		SystemManager();
 		~SystemManager();
+
+		void Update(f32 delta);
 
 		template<class T, class... Arguments>
 		T* AddSystem(Arguments&&... args) {
@@ -26,23 +27,22 @@ namespace GECS {
 			auto systemWithId = this->m_systemsTable.find(systemId);
 
 			// trying to find a system that has already been added
-			if (systemWithId != this->m_systemsTable.end()
-				&& systemWithId->second != nullptr)
+			if (systemWithId != this->m_systemsTable.end() && systemWithId->second != nullptr)
 				return static_cast<T*>(systemWithId->second);
 
 			uptr address = this->m_allocator->Allocate(sizeof(T), alignof(T));
 
-			T* newSystem = new (address)T(std::forward<Arguments>(args)...);
+			T* newSystem = new (reinterpret_cast<void*>(address))T(std::forward<Arguments>(args)...);
+			newSystem->m_systemManagerSingleton = this;
+
 			this->m_systemsTable[systemId] = newSystem;
 
 			this->m_systemsOrder.push_back(systemId);
 
 			// growing a dependency table
-			if (systemId + 1 > this->m_systemDependencies.size()) {
-				this->m_systemDependencies.resize(systemId + 1);
-				for (int i = 0; i < this->m_systemDependencies.size(); i++) {
-					this->m_systemDependencies[i].resize(systemId + 1);
-				}
+			this->m_systemDependencies.resize(systemId + 1);
+			for (int i = 0; i < this->m_systemDependencies.size(); i++) {
+				this->m_systemDependencies[i].resize(systemId + 1);
 			}
 
 			return newSystem;
@@ -51,8 +51,8 @@ namespace GECS {
 		template<class Sys, class Depend>
 		void AddSystemDependency(Sys system, Depend dependency)
 		{
-			const type_id systemId = system->GetSystemTypeID();
-			const type_id dependencyId = dependency->GetSystemTypeID();
+			const type_id systemId = system->GetSystemTypeId();
+			const type_id dependencyId = dependency->GetSystemTypeId();
 
 			this->m_systemDependencies[systemId][dependencyId] = true;
 		}

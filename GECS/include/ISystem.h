@@ -14,6 +14,9 @@
 
 namespace GECS {
 	class ISystem {
+
+		friend class SystemManager;
+
 	private:
 		f32 m_updateTime;
 
@@ -33,11 +36,7 @@ namespace GECS {
 
 		virtual inline const type_id GetSystemTypeId() const = 0;
 
-		virtual void Update(f32 elapsedTime) = 0;
-
-		inline void IncreaseTimeSinceUpdate(f32 delta) {
-			this->m_timeSinceLastUpdate += delta;
-		}
+		virtual void Update(f32 delta) = 0;
 
 		inline void ResetTimeSinceUpdate() {
 			this->m_timeSinceLastUpdate = 0;

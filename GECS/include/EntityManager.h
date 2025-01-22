@@ -31,7 +31,9 @@ namespace GECS {
 			uptr address = GetEntityContainer<T>(m_entityTypeContainers)->CreateObject();
 			const Handle entityHandle = this->GetNewHandle((T*)address);
 
-			// IMPORTANT TO FILL FIELDS BEFORE ENTITY CREATION
+			// IMPORTANT TO FILL FIELDS BEFORE CREATING AN OBJECT
+			// because components is created in entity constructor and
+			// it needs an entity handle
 			((T*)address)->m_handle = entityHandle;
 			((T*)address)->m_componentManagerSingleton = m_componentManagerSingleton;
 
