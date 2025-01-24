@@ -25,7 +25,9 @@
     <ClInclude Include="include\Delegate\Delegate.h" />
     <ClInclude Include="include\Delegate\IClassMethod.h" />
     <ClInclude Include="include\Event\Event.h" />
+    <ClInclude Include="include\Event\EventCollection.h" />
     <ClInclude Include="include\Event\IEvent.h" />
+    <ClInclude Include="include\Event\IEventCollection.h" />
     <ClInclude Include="include\Facade.h" />
     <ClInclude Include="include\Component.h" />
     <ClInclude Include="include\ComponentManager.h" />
@@ -48,6 +50,7 @@
     <ClInclude Include="include\Utilities\EngineTimer.h" />
     <ClInclude Include="include\Utilities\SystemOrderBuilder.h" />
     <ClInclude Include="include\Utilities\TypeIDCounter.h" />
+    <ClInclude Include="src\Event\IEventCollection.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\ComponentManager.cpp" />
