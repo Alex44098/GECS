@@ -27,6 +27,18 @@
     <Filter Include="Header files\Containers">
       <UniqueIdentifier>{e122ec27-cb63-429e-8476-7e9021aa262b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header files\Event">
+      <UniqueIdentifier>{a9fefe2f-0d5e-46c4-bf53-b38a106e5f8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Delegate">
+      <UniqueIdentifier>{aeb40c7b-4ec4-43d3-9836-eada42e112eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Event">
+      <UniqueIdentifier>{966be746-d959-4645-8678-11066c3108d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Delegate">
+      <UniqueIdentifier>{38505141-5173-4751-969e-dbcc964cddd6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Component.h">
@@ -101,6 +113,21 @@
     <ClInclude Include="include\Utilities\EngineTimer.h">
       <Filter>Header files\Utilities</Filter>
     </ClInclude>
+    <ClInclude Include="include\Delegate\IClassMethod.h">
+      <Filter>Header files\Delegate</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Delegate\ClassMethod.h">
+      <Filter>Header files\Delegate</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Event\IEvent.h">
+      <Filter>Header files\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Event\Event.h">
+      <Filter>Header files\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Delegate\Delegate.h">
+      <Filter>Header files\Delegate</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Utilities\TypeIDCounter.cpp">
@@ -144,6 +171,12 @@
     </ClCompile>
     <ClCompile Include="src\Utilities\EngineTimer.cpp">
       <Filter>Source files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Event\IEvent.cpp">
+      <Filter>Source files\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Delegate\Delegate.cpp">
+      <Filter>Source files\Delegate</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -19,7 +19,7 @@ namespace GECS {
 
 		virtual ~Entity() {}
 
-		virtual const type_id GetEntityTypeId() const override {
+		virtual inline const type_id GetEntityTypeId() const override {
 			return ENTITY_TYPE_ID;
 		}
 	};

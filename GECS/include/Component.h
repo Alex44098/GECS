@@ -1,24 +1,27 @@
 #pragma once
+
 #include "IComponent.h"
 
 namespace GECS {
+
 	template<class T>
 	class Component : public IComponent {
-		// Component manager responsible for deleting
-		void operator delete(void*) = delete;
-		void operator delete[](void*) = delete;
 
 	public:
 
 		static const type_id COMPONENT_TYPE_ID;
 
+		// Component manager responsible for deleting
+		void operator delete(void*) = delete;
+		void operator delete[](void*) = delete;
+
 		Component() {}
 
 		virtual ~Component() {}
 
-		inline type_id GetStaticComponentTypeID() const
+		inline type_id GetComponentTypeId() const
 		{
-			return STATIC_COMPONENT_TYPE_ID;
+			return COMPONENT_TYPE_ID;
 		}
 	};
 
