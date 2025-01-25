@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Delegate/Delegate.h"
+#include "Delegate/IClassMethod.h"
 
 namespace GECS {
 	namespace Event {
@@ -14,9 +14,9 @@ namespace GECS {
 
 			virtual void Call(const IEvent* event) = 0;
 
-			virtual void AddDelegate(const Delegate* delegate) = 0;
+			virtual void AddMethod(const IClassMethod* method) = 0;
 
-			virtual void RemoveDelegate(Delegate* delegate) = 0;
+			virtual void RemoveMethod(IClassMethod* method) = 0;
 		};
 	}
 }

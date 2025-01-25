@@ -137,6 +137,9 @@
     <ClInclude Include="src\Event\IEventCollection.cpp">
       <Filter>Source files\Event</Filter>
     </ClInclude>
+    <ClInclude Include="include\Event\EventQueue.h">
+      <Filter>Header files\Event</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Utilities\TypeIDCounter.cpp">
@@ -186,6 +189,9 @@
     </ClCompile>
     <ClCompile Include="src\Delegate\Delegate.cpp">
       <Filter>Source files\Delegate</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Event\EventQueue.cpp">
+      <Filter>Source files\Event</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

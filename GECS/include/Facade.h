@@ -8,6 +8,9 @@
 // Setting system manager memory size
 #define GECS_SYSTEM_MANAGER_MEMORY_CAPACITY 8388608 // 8 MB
 
+// Setting event buffer memory size
+#define GECS_EVENT_BUFFER_MEMORY_SIZE 4194304 // 4 MB
+
 // Chunks settings
 #define ENTITY_CONTAINER_CHUNK_MAX_OBJECTS 512
 #define COMPONENT_CONTAINER_CHUNK_MAX_OBJECTS 512

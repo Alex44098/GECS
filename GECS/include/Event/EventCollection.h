@@ -7,7 +7,7 @@ namespace GECS {
 	namespace Event {
 		template<class T>
 		class EventCollection : public IEventCollection {
-			std::list<Delegate*> m_eventDelegateList;
+			std::list<IClassMethod*> m_eventMethodsList;
 
 		public:
 
@@ -16,29 +16,30 @@ namespace GECS {
 
 			virtual ~EventCollection()
 			{
-				this->m_eventDelegateList.clear();
+				this->m_eventMethodsList.clear();
 			}
 
 			void Call(const IEvent* event) override {
-				for (Delegate* delegate : this->m_eventDelegateList) {
-					delegate(event);
+				for (IClassMethod* method : this->m_eventMethodsList) {
+					method->Call(event);
 				}
 			}
 
-			virtual void AddDelegate(const Delegate* delegate) {
-				for (Delegate* eventDelegate : this->m_eventDelegateList)
-					if (eventDelegate == delegate)
+			virtual void AddMethod(const IClassMethod* method) {
+				for (IClassMethod* eventMethod : this->m_eventMethodsList)
+					if (eventMethod == method)
 						return;
 
-				this->m_eventDelegateList.push_back(delegate);
+				this->m_eventMethodsList.push_back(method);
 			}
 
-			virtual void RemoveDelegate(Delegate* delegate) {
-				for (Delegate* eventDelegate : this->m_eventDelegateList) {
-					if (eventDelegate == delegate) {
-						this->m_eventDelegateList.remove(delegate);
+			virtual void RemoveMethod(IClassMethod* method) {
+				for (IClassMethod* eventMethod : this->m_eventMethodsList) {
+					if (eventMethod == method) {
+						this->m_eventMethodsList.remove(eventMethod);
+						delete eventMethod;
 
-						delete delegate;
+						return;
 					}
 				}
 			}

@@ -26,6 +26,7 @@
     <ClInclude Include="include\Delegate\IClassMethod.h" />
     <ClInclude Include="include\Event\Event.h" />
     <ClInclude Include="include\Event\EventCollection.h" />
+    <ClInclude Include="include\Event\EventQueue.h" />
     <ClInclude Include="include\Event\IEvent.h" />
     <ClInclude Include="include\Event\IEventCollection.h" />
     <ClInclude Include="include\Facade.h" />
@@ -55,6 +56,7 @@
   <ItemGroup>
     <ClCompile Include="src\ComponentManager.cpp" />
     <ClCompile Include="src\Delegate\Delegate.cpp" />
+    <ClCompile Include="src\Event\EventQueue.cpp" />
     <ClCompile Include="src\Event\IEvent.cpp" />
     <ClCompile Include="src\Facade.cpp" />
     <ClCompile Include="src\IComponent.cpp" />

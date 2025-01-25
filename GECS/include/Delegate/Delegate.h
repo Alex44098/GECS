@@ -17,7 +17,7 @@ namespace GECS {
 		void Connect(Class* c, Method method) {
 			if (m_classMethod)
 				delete m_classMethod;
-			m_classMethod = new ClassMethod<Class, Method>(c, method);
+			m_classMethod = new ClassMethod<Class, Method>(c, method); // that bad
 		}
 
 		void operator() () {
