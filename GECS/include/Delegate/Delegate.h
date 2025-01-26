@@ -24,7 +24,7 @@ namespace GECS {
 			m_classMethod->Call();
 		}
 
-		void operator() (const Event::IEvent* const e) {
+		void operator() (const IEvent* const e) {
 			m_classMethod->Call(e);
 		}
 	};

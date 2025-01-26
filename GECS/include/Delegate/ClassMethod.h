@@ -30,9 +30,9 @@ namespace GECS {
 
 	// specialization - with IEvent argument
 	template<class Class>
-	class ClassMethod<Class, void(Class::*)(const Event::IEvent* const)> : public IClassMethod {
+	class ClassMethod<Class, void(Class::*)(const IEvent* const)> : public IClassMethod {
 		
-		typedef void(Class::* Method)(const Event::IEvent* const);
+		typedef void(Class::* Method)(const IEvent* const);
 
 		Class* m_class;
 		Method m_method;
@@ -43,8 +43,10 @@ namespace GECS {
 			m_class(c),
 			m_method(method)
 		{}
+
+		virtual inline void Call() override { } // yes, today without solId
 		
-		virtual inline void Call(const Event::IEvent* const e) override {
+		virtual inline void Call(const IEvent* const e) override {
 			(m_class->*m_method)(e);
 		}
 	};

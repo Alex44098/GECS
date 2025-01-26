@@ -14,6 +14,6 @@ namespace GECS {
 
 		virtual inline void Call() = 0;
 
-		virtual inline void Call(const Event::IEvent* const e) = 0;
+		virtual inline void Call(const IEvent* const e) = 0;
 	};
 }

@@ -51,13 +51,13 @@
     <ClInclude Include="include\Utilities\EngineTimer.h" />
     <ClInclude Include="include\Utilities\SystemOrderBuilder.h" />
     <ClInclude Include="include\Utilities\TypeIDCounter.h" />
-    <ClInclude Include="src\Event\IEventCollection.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\ComponentManager.cpp" />
     <ClCompile Include="src\Delegate\Delegate.cpp" />
     <ClCompile Include="src\Event\EventQueue.cpp" />
     <ClCompile Include="src\Event\IEvent.cpp" />
+	  <ClCompile Include="src\Event\IEventCollection.cpp" />
     <ClCompile Include="src\Facade.cpp" />
     <ClCompile Include="src\IComponent.cpp" />
     <ClCompile Include="src\IEntity.cpp" />
