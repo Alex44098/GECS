@@ -22,7 +22,6 @@
     <ClInclude Include="include\Containers\ComponentContainer.h" />
     <ClInclude Include="include\Containers\EntityContainer.h" />
     <ClInclude Include="include\Delegate\ClassMethod.h" />
-    <ClInclude Include="include\Delegate\Delegate.h" />
     <ClInclude Include="include\Delegate\IClassMethod.h" />
     <ClInclude Include="include\Event\Event.h" />
     <ClInclude Include="include\Event\EventCollection.h" />
@@ -54,10 +53,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\ComponentManager.cpp" />
-    <ClCompile Include="src\Delegate\Delegate.cpp" />
+    <ClCompile Include="src\Delegate\IClassMethod.cpp" />
     <ClCompile Include="src\Event\EventQueue.cpp" />
     <ClCompile Include="src\Event\IEvent.cpp" />
-	  <ClCompile Include="src\Event\IEventCollection.cpp" />
+    <ClCompile Include="src\Event\IEventCollection.cpp" />
     <ClCompile Include="src\Facade.cpp" />
     <ClCompile Include="src\IComponent.cpp" />
     <ClCompile Include="src\IEntity.cpp" />

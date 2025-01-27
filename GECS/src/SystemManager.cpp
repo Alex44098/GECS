@@ -4,7 +4,7 @@
 
 namespace GECS {
 	SystemManager::SystemManager() {
-		this->m_allocator = new Memory::LinearAllocator(GECS_SYSTEM_MANAGER_MEMORY_CAPACITY, Memory::m_globalMemManager->Allocate(GECS_SYSTEM_MANAGER_MEMORY_CAPACITY));
+		this->m_allocator = new Memory::LinearAllocator(GECS_SYSTEM_MANAGER_MEMORY_CAPACITY, Memory::g_globalMemManager->Allocate(GECS_SYSTEM_MANAGER_MEMORY_CAPACITY));
 	}
 
 	SystemManager::~SystemManager() {
@@ -12,7 +12,7 @@ namespace GECS {
 			it->second->~ISystem();
 		}
 
-		Memory::m_globalMemManager->Free(this->m_allocator->GetAddressBegining());
+		Memory::g_globalMemManager->Free(this->m_allocator->GetAddressBegining());
 		delete this->m_allocator;
 	}
 

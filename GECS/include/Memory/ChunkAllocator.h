@@ -31,7 +31,7 @@ namespace GECS {
 
 		public:
 			ChunkAllocator() {
-				PoolAllocator* allocator = new PoolAllocator(m_allocSize, m_globalMemManager->Allocate(m_allocSize), sizeof(T), alignof(T));
+				PoolAllocator* allocator = new PoolAllocator(m_allocSize, g_globalMemManager->Allocate(m_allocSize), sizeof(T), alignof(T));
 				this->m_chunks.push_back(new MemoryChunk(allocator));
 			}
 
@@ -46,7 +46,7 @@ namespace GECS {
 					chunk->m_objects.clear();
 
 					// release memory, allocated for allocator in chunk
-					m_globalMemManager->Free(chunk->m_allocator->GetAddressBegining());
+					g_globalMemManager->Free(chunk->m_allocator->GetAddressBegining());
 					delete chunk->m_allocator;
 
 					delete chunk;
@@ -71,7 +71,7 @@ namespace GECS {
 				}
 
 				// creating new chunk
-				PoolAllocator* allocator = new PoolAllocator(m_allocSize, m_globalMemManager->Allocate(m_allocSize), sizeof(T), alignof(T));
+				PoolAllocator* allocator = new PoolAllocator(m_allocSize, g_globalMemManager->Allocate(m_allocSize), sizeof(T), alignof(T));
 				MemoryChunk* newChunk = new MemoryChunk(allocator);
 
 				this->m_chunks.push_front(newChunk);
@@ -80,6 +80,8 @@ namespace GECS {
 				assert(slot != (uptr)nullptr && "Chunk allocator: new object not created");
 				newChunk->m_objects.clear();
 				newChunk->m_objects.push_back((T*)slot);
+
+				return slot;
 			}
 
 			void ReleaseObject(uptr address) {

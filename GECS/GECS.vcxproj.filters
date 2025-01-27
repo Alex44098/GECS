@@ -125,17 +125,11 @@
     <ClInclude Include="include\Event\Event.h">
       <Filter>Header files\Event</Filter>
     </ClInclude>
-    <ClInclude Include="include\Delegate\Delegate.h">
-      <Filter>Header files\Delegate</Filter>
-    </ClInclude>
     <ClInclude Include="include\Event\EventCollection.h">
       <Filter>Header files\Event</Filter>
     </ClInclude>
     <ClInclude Include="include\Event\IEventCollection.h">
       <Filter>Header files\Event</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Event\IEventCollection.cpp">
-      <Filter>Source files\Event</Filter>
     </ClInclude>
     <ClInclude Include="include\Event\EventQueue.h">
       <Filter>Header files\Event</Filter>
@@ -187,11 +181,14 @@
     <ClCompile Include="src\Event\IEvent.cpp">
       <Filter>Source files\Event</Filter>
     </ClCompile>
-    <ClCompile Include="src\Delegate\Delegate.cpp">
-      <Filter>Source files\Delegate</Filter>
-    </ClCompile>
     <ClCompile Include="src\Event\EventQueue.cpp">
       <Filter>Source files\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Event\IEventCollection.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Delegate\IClassMethod.cpp">
+      <Filter>Source files\Delegate</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

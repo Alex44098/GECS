@@ -23,6 +23,18 @@ namespace GECS {
 			m_method(method)
 		{}
 
+		virtual inline object_id GetClassHash() const override
+		{
+			static const object_id classHash{ typeid(Class).hash_code() };
+			return classHash;
+		}
+
+		virtual inline object_id GetMethodHash() const override
+		{
+			static const object_id methodHash{ typeid(Method).hash_code() };
+			return methodHash;
+		}
+
 		virtual inline void Call() override {
 			(m_class->*m_method)();
 		}
@@ -30,9 +42,9 @@ namespace GECS {
 
 	// specialization - with IEvent argument
 	template<class Class>
-	class ClassMethod<Class, void(Class::*)(const IEvent* const)> : public IClassMethod {
+	class ClassMethod<Class, void(Class::*)(const Event::IEvent* const)> : public IClassMethod {
 		
-		typedef void(Class::* Method)(const IEvent* const);
+		typedef void(Class::* Method)(const Event::IEvent* const);
 
 		Class* m_class;
 		Method m_method;
@@ -44,10 +56,28 @@ namespace GECS {
 			m_method(method)
 		{}
 
+		virtual inline object_id GetClassHash() const override
+		{
+			static const object_id classHash{ typeid(Class).hash_code() };
+			return classHash;
+		}
+
+		virtual inline object_id GetMethodHash() const override
+		{
+			static const object_id methodHash{ typeid(Method).hash_code() };
+			return methodHash;
+		}
+
 		virtual inline void Call() override { } // yes, today without solId
 		
-		virtual inline void Call(const IEvent* const e) override {
+		virtual inline void Call(const Event::IEvent* const e) override {
 			(m_class->*m_method)(e);
+		}
+
+		virtual bool operator==(const IClassMethod* other) const override {
+			ClassMethod* cm = (ClassMethod*)other;
+
+			return (this->m_class == cm->m_class) && (this->m_method == cm->m_method);
 		}
 	};
 }

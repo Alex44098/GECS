@@ -4,22 +4,24 @@
 #include "Utilities/TypeIDCounter.h"
 
 namespace GECS {
-	template<class T>
-	class Event : public IEvent {
+	namespace Event {
+		template<class T>
+		class Event : public IEvent {
 
-	public:
+		public:
 
-		static const type_id EVENT_TYPE_ID;
+			static const type_id EVENT_TYPE_ID;
 
-		Event() {}
+			Event() {}
 
-		virtual ~Event() {}
+			virtual ~Event() {}
 
-		virtual inline const type_id GetEventTypeId() const override {
-			return EVENT_TYPE_ID;
-		}
-	};
+			virtual inline const type_id GetEventTypeId() const override {
+				return EVENT_TYPE_ID;
+			}
+		};
 
-	template <class T>
-	const type_id Event<T>::EVENT_TYPE_ID = Identifier::TypeIDCounter<IEvent>::GetTypeId<T>();
+		template <class T>
+		const type_id Event<T>::EVENT_TYPE_ID = Identifier::TypeIDCounter<IEvent>::GetTypeId<T>();
+	}
 }

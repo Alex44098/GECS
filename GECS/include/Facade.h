@@ -29,6 +29,11 @@ namespace GECS {
 
 	namespace Memory {
 		class GlobalMemoryManager;
-		extern GlobalMemoryManager* m_globalMemManager; // global manager
+		extern GlobalMemoryManager* g_globalMemManager; // global manager
+	}
+
+	namespace Event {
+		class EventQueue;
+		extern EventQueue* g_eventQueue; // global event queue
 	}
 }

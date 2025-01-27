@@ -1,9 +1,11 @@
 #include "Event/IEvent.h"
 
 namespace GECS {
-	IEvent::IEvent()
-	{}
+	namespace Event {
+		IEvent::IEvent()
+		{}
 
-	IEvent::~IEvent()
-	{}
+		IEvent::~IEvent()
+		{}
+	}
 }

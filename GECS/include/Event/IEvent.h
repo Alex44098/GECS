@@ -3,13 +3,15 @@
 #include "Facade.h"
 
 namespace GECS {
-	class IEvent {
-	public:
+	namespace Event {
+		class IEvent {
+		public:
 
-		IEvent();
+			IEvent();
 
-		virtual ~IEvent();
+			virtual ~IEvent();
 
-		virtual inline const type_id GetEventTypeId() const = 0;
-	};
+			virtual inline const type_id GetEventTypeId() const = 0;
+		};
+	}
 }
