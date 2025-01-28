@@ -10,10 +10,6 @@ namespace GECS {
 
 		virtual ~IClassMethod();
 
-		virtual inline object_id GetClassHash() const = 0;
-
-		virtual inline object_id GetMethodHash() const = 0;
-
 		virtual inline void Call() = 0;
 
 		virtual inline void Call(const Event::IEvent* const e) = 0;

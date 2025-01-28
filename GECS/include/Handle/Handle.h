@@ -22,8 +22,8 @@ namespace GECS {
 			using value_type = handle_value_type;
 
 			static constexpr value_type	MIN_VERSION{ 0 };
-			static constexpr value_type	MAX_VERSION{ (1U << version_bits) - 2U };
-			static constexpr value_type	MAX_INDICES{ (1U << index_bits) - 2U };
+			static constexpr value_type	MAX_VERSION{ (1ULL << version_bits) - 2U };
+			static constexpr value_type	MAX_INDICES{ (1ULL << index_bits) - 2U };
 
 			static constexpr value_type	INVALID_HANDLE{ 0 };
 

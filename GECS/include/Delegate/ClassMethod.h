@@ -56,18 +56,6 @@ namespace GECS {
 			m_method(method)
 		{}
 
-		virtual inline object_id GetClassHash() const override
-		{
-			static const object_id classHash{ typeid(Class).hash_code() };
-			return classHash;
-		}
-
-		virtual inline object_id GetMethodHash() const override
-		{
-			static const object_id methodHash{ typeid(Method).hash_code() };
-			return methodHash;
-		}
-
 		virtual inline void Call() override { } // yes, today without solId
 		
 		virtual inline void Call(const Event::IEvent* const e) override {

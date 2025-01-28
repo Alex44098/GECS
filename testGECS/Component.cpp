@@ -21,28 +21,28 @@ namespace GECS
 {
 	TEST_CLASS(ComponentTest)
 	{
+		class GameComponent : public Component<GameComponent> {
+			int foo;
+		public:
+			GameComponent(int foo) {
+				this->foo = foo;
+			}
+			virtual ~GameComponent() {}
+
+			int GetFoo() {
+				return foo;
+			}
+		};
+
+		class GameObject : public Entity<GameObject> {
+		public:
+			GameObject() {
+				AddComponent<GameComponent>(10);
+			}
+			virtual ~GameObject() {}
+		};
+
 		TEST_METHOD(ComponentCreation) {
-			class GameComponent : public Component<GameComponent> {
-				int foo;
-			public:
-				GameComponent(int foo) {
-					this->foo = foo;
-				}
-				virtual ~GameComponent() {}
-
-				int GetFoo() {
-					return foo;
-				}
-			};
-
-			class GameObject : public Entity<GameObject> {
-			public:
-				GameObject() {
-					AddComponent<GameComponent>(10);
-				}
-				virtual ~GameObject() {}
-			};
-
 			Assert::AreEqual(0, (int)GameComponent::COMPONENT_TYPE_ID);
 
 			ComponentManager* cm = new ComponentManager();
@@ -55,6 +55,30 @@ namespace GECS
 			Assert::AreEqual(en->GetEntityHandle(), eh);
 
 			Assert::AreEqual(cm->GetComponent<GameComponent>(eh)->GetFoo(), 10);
+
+			em->ReleaseEntity(eh);
+			em->DestroyReleasedEntities();
+
+			delete em;
+			delete cm;
+		}
+
+		TEST_METHOD(ComponentRemoving) {
+			ComponentManager* cm = new ComponentManager();
+			EntityManager* em = new EntityManager(cm);
+
+			Handle eh = em->CreateEntity<GameObject>();
+
+			IEntity* en = em->GetEntity(eh);
+
+			en->RemoveComponent<GameComponent>();
+
+			Assert::AreEqual((void*)cm->GetComponent<GameComponent>(eh), (void*)nullptr);
+
+			en->AddComponent<GameComponent>(5);
+
+			Assert::AreNotEqual((void*)cm->GetComponent<GameComponent>(eh), (void*)nullptr);
+			Assert::AreEqual(cm->GetComponent<GameComponent>(eh)->GetFoo(), 5);
 
 			em->ReleaseEntity(eh);
 			em->DestroyReleasedEntities();
