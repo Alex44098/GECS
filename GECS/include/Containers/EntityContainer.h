@@ -26,7 +26,7 @@ namespace GECS {
 
 		virtual void ReleaseEntity(IEntity* entity) override {
 			entity->~IEntity();
-			this->ReleaseObject((uptr)entity);
+			this->ReleaseObject(reinterpret_cast<uptr>(entity));
 		}
 	};
 

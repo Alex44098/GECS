@@ -9,6 +9,7 @@ namespace GECS {
 	class IEntity {
 
 		friend class EntityManager;
+		friend class MemoryStressTest;
 
 	protected:
 

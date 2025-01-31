@@ -9,7 +9,7 @@ namespace GECS {
 		private:
 			const size_t m_objectSize;
 			const u8 m_objectAlignment;
-			uptr* m_pool;
+			void** m_pool;
 
 		public:
 

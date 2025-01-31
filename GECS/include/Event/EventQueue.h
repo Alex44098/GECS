@@ -64,7 +64,7 @@ namespace GECS {
 			void Send(Arguments&&... args) {
 				uptr address = m_eventAllocator->Allocate(sizeof(Event), alignof(Event));
 
-				assert(address != (uptr)nullptr && "EventHandler: address not allocated");
+				assert(address != 0 && "EventHandler: address not allocated");
 
 				this->m_eventsQueue.push_back(new (reinterpret_cast<void*>(address))Event(std::forward<Arguments>(args)...));
 			}

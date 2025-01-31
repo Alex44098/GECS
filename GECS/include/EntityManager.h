@@ -38,7 +38,7 @@ namespace GECS {
 			((T*)address)->m_componentManagerSingleton = m_componentManagerSingleton;
 
 			// creating an object at a dedicated address
-			IEntity* entity = new (reinterpret_cast<void*>(address))T(std::forward<Arguments>(args)...);
+			IEntity* entity = new (reinterpret_cast<void*>(address)) T (std::forward<Arguments>(args)...);
 
 			return entityHandle;
 		}

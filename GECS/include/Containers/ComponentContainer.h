@@ -26,7 +26,7 @@ namespace GECS {
 
 		virtual void ReleaseComponent(IComponent* component) override {
 			component->~IComponent();
-			this->ReleaseObject((uptr)component);
+			this->ReleaseObject(reinterpret_cast<uptr>(component));
 		}
 	};
 

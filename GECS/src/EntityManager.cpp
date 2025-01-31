@@ -14,9 +14,6 @@ namespace GECS {
 	}
 
 	void EntityManager::ReleaseEntity(Handle handle) {
-		IEntity* entity = this->m_entityHandleTable[handle];
-		const type_id entityTypeId = entity->GetEntityTypeId();
-
 		if (this->m_numReleasedEntities < this->m_releasedEntities.size()) {
 			this->m_releasedEntities[this->m_numReleasedEntities++] = handle;
 		}

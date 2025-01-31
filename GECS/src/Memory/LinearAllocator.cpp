@@ -17,6 +17,9 @@ namespace GECS {
 			uptr offset = GetOffset(m_currentPosition, align);
 			uptr alignedAddress = this->m_currentPosition + offset;
 
+			if (alignedAddress - m_firstAddress + size > m_memorySize)
+				return 0;
+
 			m_currentPosition = alignedAddress + size;
 			m_numAllocations++;
 

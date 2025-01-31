@@ -14,25 +14,27 @@ namespace GECS {
 			this->m_pool = nullptr;
 		}
 
-		uptr PoolAllocator::Allocate(size_t size, u8 align) {
+		uptr PoolAllocator::Allocate(size_t size, u8 align) { // This is where "SOLID" leaves us
 			assert(size > 0 && "Pool allocator: size cant be 0");
 			assert(size == this->m_objectSize && align == this->m_objectAlignment && "Pool allocator: size and align should be standart");
-			assert(m_pool != nullptr && "Pool allocator: allocator not init");
+			
+			if (m_pool == nullptr)
+				return 0;
 
-			uptr freeSlot = (uptr)this->m_pool;
+			void* freeSlot = this->m_pool;
 
 			// move to the next free slot
-			this->m_pool = (uptr*)(*this->m_pool);
+			this->m_pool = (void**)(*this->m_pool);
 			
 			this->m_numAllocations++;
 
-			return freeSlot;
+			return reinterpret_cast<uptr>(freeSlot);
 		}
 
 		void PoolAllocator::Free(uptr address) {
-			*((uptr**)address) = this->m_pool;
+			*((void**)address) = this->m_pool;
 
-			this->m_pool = (uptr*)address;
+			this->m_pool = (void**)address;
 
 			this->m_numAllocations--;
 		}
@@ -40,17 +42,17 @@ namespace GECS {
 		void PoolAllocator::Clear() {
 			u8 offset = GetOffset(this->m_firstAddress, this->m_objectAlignment);
 
-			size_t numObjects = (size_t)floor((static_cast<double>(this->m_memorySize) - offset) / this->m_objectSize);
+			size_t numObjects = (this->m_memorySize - offset) / this->m_objectSize;
 
-			this->m_pool = (uptr*)(this->m_firstAddress + offset);
-
-			uptr* slot = this->m_pool;
-			for (int i = 0; i < (numObjects - 1); i++) {
-				*slot = (uptr)(slot + this->m_objectSize);
-				slot = (uptr*)*slot;
+			this->m_pool = (void**)(this->m_firstAddress + offset);
+			void** slot = this->m_pool;
+			
+			for (int i = 0; i < numObjects - 1; i++) {
+				*slot = (void*)(reinterpret_cast<uptr>(slot) + this->m_objectSize);
+				slot = (void**)*slot;
 			}
 
-			*slot = (uptr)nullptr;
+			*slot = nullptr;
 		}
 	}
 }

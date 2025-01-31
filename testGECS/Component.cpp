@@ -100,7 +100,7 @@ namespace GECS
 				virtual ~GameComponent2() {}
 			};
 
-			Assert::AreEqual((int)Identifier::TypeIDCounter<IComponent>::GetNumTypes(), 3);
+			Assert::AreEqual((int)Identifier::TypeIDCounter<IComponent>::GetNumTypes(), 4);
 
 			Assert::AreEqual(1, (int)GameComponent1::COMPONENT_TYPE_ID);
 			Assert::AreEqual(2, (int)GameComponent2::COMPONENT_TYPE_ID);

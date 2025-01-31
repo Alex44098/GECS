@@ -11,7 +11,7 @@ namespace GECS {
 
 		private:
 			static const size_t m_maxObjects = MAX_OBJECTS;
-			static const size_t m_allocSize = (sizeof(T) + alignof(T)) * MAX_OBJECTS;
+			static const size_t m_allocSize = sizeof(T) * m_maxObjects + alignof(T);
 
 			class MemoryChunk {
 			public:
@@ -40,13 +40,15 @@ namespace GECS {
 				for (MemoryChunk* chunk : this->m_chunks) {
 					// release all objects
 					for (T* object : chunk->m_objects) {
-						((T*)object)->~T();
+						object->~T();
 					}
 
 					chunk->m_objects.clear();
 
 					// release memory, allocated for allocator in chunk
-					g_globalMemManager->Free(chunk->m_allocator->GetAddressBegining());
+					g_globalMemManager->Free(chunk->m_startAddress);
+
+					// don't forget free allocator in chunk!!!
 					delete chunk->m_allocator;
 
 					delete chunk;
@@ -55,14 +57,14 @@ namespace GECS {
 			}
 
 			uptr CreateObject() {
-				uptr slot = (uptr)nullptr;
+				uptr slot = 0;
 
 				for (MemoryChunk* chunk : this->m_chunks) {
-					if (chunk->m_objects.size() > m_maxObjects)
+					if (chunk->m_objects.size() >= m_maxObjects)
 						continue;
 
 					slot = chunk->m_allocator->Allocate(sizeof(T), alignof(T));
-					if (slot != (uptr)nullptr) {
+					if (slot != 0) {
 						chunk->m_objects.push_back((T*)slot);
 						return slot;
 					}
@@ -77,7 +79,7 @@ namespace GECS {
 				this->m_chunks.push_front(newChunk);
 
 				slot = newChunk->m_allocator->Allocate(sizeof(T), alignof(T));
-				assert(slot != (uptr)nullptr && "Chunk allocator: new object not created");
+				assert(slot != 0 && "Chunk allocator: new object not created");
 				newChunk->m_objects.clear();
 				newChunk->m_objects.push_back((T*)slot);
 

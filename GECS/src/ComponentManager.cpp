@@ -35,12 +35,14 @@ namespace GECS {
 	}
 
 	void ComponentManager::AttachComponentToEntity(Handle entityHandle, object_id componentId, type_id componentTypeId) {
-		if ((this->m_entityComponentsIdByTypes.size() - 1) < entityHandle.index) {
-
+		while (this->m_entityComponentsIdByTypes.size() - 1 < entityHandle.index) {
 			// grow entity-component table for new entity
 			static const size_t numComponents = Identifier::TypeIDCounter<IComponent>::GetNumTypes();
+
 			size_t i = this->m_entityComponentsIdByTypes.size();
 			size_t newSize = i + ENTITY_COMPONENT_TABLE_GROW_SIZE;
+
+			this->m_entityComponentsIdByTypes.resize(newSize);
 
 			for (; i < newSize; i++) {
 				this->m_entityComponentsIdByTypes[i].resize(numComponents, INVALID_OBJECT_ID);
