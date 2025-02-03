@@ -9,22 +9,21 @@
 namespace GECS {
 	namespace Event {
 		class EventQueue {
-
 			Memory::LinearAllocator* m_eventAllocator;
 
 			std::unordered_map<type_id, IEventCollection*> m_eventsById;
 
 			std::vector<IEvent*> m_eventsQueue;
 
-		public:
-
-			EventQueue();
-			~EventQueue();
-
 			inline void ClearEventBuffer() {
 				this->m_eventAllocator->Clear();
 				this->m_eventsQueue.clear();
 			}
+
+		public:
+
+			EventQueue();
+			~EventQueue();
 
 			template<class Event, class Class>
 			inline void AddEventHandler(Class* c, void(Class::* Method)(const IEvent* const)) {

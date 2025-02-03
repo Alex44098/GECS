@@ -10,7 +10,9 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 namespace GECS
 {
 	TEST_CLASS(EventTest)
-	{	
+	{
+		Event::EventQueue* m_eventQueue;
+
 		struct FooEvent : public Event::Event<FooEvent> {
 			int x;
 
@@ -37,16 +39,16 @@ namespace GECS
 			}
 
 		public:
-			GameObject() {
-				Event::g_eventQueue->AddEventHandler<FooEvent>(this, &GameObject::Foo);
+			GameObject(Event::EventQueue* m_eventQueue) {
+				m_eventQueue->AddEventHandler<FooEvent>(this, &GameObject::Foo);
 				this->x = 0;
 			}
 			~GameObject() {
 				
 			}
 
-			void RemoveEvent() {
-				Event::g_eventQueue->RemoveEventHandler<FooEvent>(this, &GameObject::Foo);
+			void RemoveEvent(Event::EventQueue* m_eventQueue) {
+				m_eventQueue->RemoveEventHandler<FooEvent>(this, &GameObject::Foo);
 			}
 
 			int GetX() {
@@ -56,6 +58,7 @@ namespace GECS
 
 		class GameObject1 {
 			int x;
+			Event::EventQueue* m_eventQueue;
 
 			void Foo(const Event::IEvent* e) {
 				const FooEvent1* event = reinterpret_cast<const FooEvent1*>(e);
@@ -64,12 +67,13 @@ namespace GECS
 			}
 
 		public:
-			GameObject1() {
-				Event::g_eventQueue->AddEventHandler<FooEvent1>(this, &GameObject1::Foo);
+			GameObject1(Event::EventQueue* m_eventQueue) {
+				this->m_eventQueue = m_eventQueue;
+				m_eventQueue->AddEventHandler<FooEvent1>(this, &GameObject1::Foo);
 				this->x = 0;
 			}
 			~GameObject1() {
-				Event::g_eventQueue->RemoveEventHandler<FooEvent>(this, &GameObject1::Foo);
+				m_eventQueue->RemoveEventHandler<FooEvent1>(this, &GameObject1::Foo);
 			}
 
 			int GetX() {
@@ -87,26 +91,34 @@ namespace GECS
 		}
 
 		TEST_METHOD(EventCalling) {
-			GameObject go1;
-			GameObject go2;
-			GameObject1 go3;
+			m_eventQueue = new Event::EventQueue();
 
-			Event::g_eventQueue->Send<FooEvent>(5);
-			Event::g_eventQueue->Send<FooEvent1>(10);
-			Event::g_eventQueue->ProcessEvents();
+			GameObject* go1 = new GameObject(m_eventQueue);
+			GameObject* go2 = new GameObject(m_eventQueue);
+			GameObject1* go3 = new GameObject1(m_eventQueue);
 
-			Assert::AreEqual(5, go1.GetX());
-			Assert::AreEqual(5, go2.GetX());
-			Assert::AreEqual(10, go3.GetX());
+			m_eventQueue->Send<FooEvent>(5);
+			m_eventQueue->Send<FooEvent1>(10);
+			m_eventQueue->ProcessEvents();
 
-			go2.RemoveEvent();
+			Assert::AreEqual(5, go1->GetX());
+			Assert::AreEqual(5, go2->GetX());
+			Assert::AreEqual(10, go3->GetX());
 
-			Event::g_eventQueue->Send<FooEvent>(100);
-			Event::g_eventQueue->ProcessEvents();
+			go2->RemoveEvent(m_eventQueue);
 
-			Assert::AreEqual(100, go1.GetX());
+			m_eventQueue->Send<FooEvent>(100);
+			m_eventQueue->ProcessEvents();
+
+			Assert::AreEqual(100, go1->GetX());
 			
-			Assert::AreEqual(5, go2.GetX());
+			Assert::AreEqual(5, go2->GetX());
+
+			delete go1;
+			delete go2;
+			delete go3;
+
+			delete m_eventQueue;
 		}
 	};
 }

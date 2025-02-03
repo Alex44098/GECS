@@ -26,14 +26,23 @@ namespace GECS {
 	class EntityManager;
 	class ComponentManager;
 	class SystemManager;
+	
+	namespace Event {
+		class EventQueue;
+	}
+
+	namespace Util {
+		class EngineTimer;
+	}
 
 	namespace Memory {
 		class GlobalMemoryManager;
 		extern GlobalMemoryManager* g_globalMemManager; // global manager
 	}
 
-	namespace Event {
-		class EventQueue;
-		extern EventQueue* g_eventQueue; // global event queue
-	}
+	class GECSMain;
+	extern GECSMain* GECSInstance;
+
+	void Init();
+	void Destroy();
 }

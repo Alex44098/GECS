@@ -1,14 +1,22 @@
 #include "Facade.h"
 
 #include "Memory/GlobalMemoryManager.h"
-#include "Event/EventQueue.h"
+#include "GECSMain.h"
 
 namespace GECS {
 	namespace Memory {
 		GlobalMemoryManager* g_globalMemManager = new GlobalMemoryManager();
 	}
 
-	namespace Event {
-		EventQueue* g_eventQueue = new EventQueue();
+	GECSMain* GECSInstance = nullptr;
+
+	void Init() {
+		if (GECSInstance == nullptr)
+			GECSInstance = new GECSMain();
+	}
+
+	void Destroy() {
+		if (GECSInstance != nullptr)
+			delete GECSInstance;
 	}
 }

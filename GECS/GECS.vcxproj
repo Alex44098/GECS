@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GECSHeaders.h" />
     <ClInclude Include="include\Containers\ComponentContainer.h" />
     <ClInclude Include="include\Containers\EntityContainer.h" />
     <ClInclude Include="include\Delegate\ClassMethod.h" />
@@ -33,6 +34,7 @@
     <ClInclude Include="include\ComponentManager.h" />
     <ClInclude Include="include\Entity.h" />
     <ClInclude Include="include\EntityManager.h" />
+    <ClInclude Include="include\GECSMain.h" />
     <ClInclude Include="include\Handle\Handle.h" />
     <ClInclude Include="include\Handle\HandleManager.h" />
     <ClInclude Include="include\IComponent.h" />
@@ -58,6 +60,7 @@
     <ClCompile Include="src\Event\IEvent.cpp" />
     <ClCompile Include="src\Event\IEventCollection.cpp" />
     <ClCompile Include="src\Facade.cpp" />
+    <ClCompile Include="src\GECSMain.cpp" />
     <ClCompile Include="src\IComponent.cpp" />
     <ClCompile Include="src\IEntity.cpp" />
     <ClCompile Include="src\ISystem.cpp" />

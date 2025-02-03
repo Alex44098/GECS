@@ -160,6 +160,7 @@
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Event.cpp" />
+    <ClCompile Include="GECSInstance.cpp" />
     <ClCompile Include="GlobalMemory.cpp" />
     <ClCompile Include="MemoryStressTest.cpp" />
     <ClCompile Include="pch.cpp">
