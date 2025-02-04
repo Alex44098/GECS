@@ -30,6 +30,50 @@ namespace GECS {
 			std::list<MemoryChunk*> m_chunks;
 
 		public:
+			class iterator : public std::iterator<std::forward_iterator_tag, T>
+			{
+				typename std::list<MemoryChunk*>::iterator curChunk;
+				typename std::list<MemoryChunk*>::iterator lastChunk;
+				typename std::list<T*>::iterator curObject;
+
+			public:
+
+				iterator(typename std::list<MemoryChunk*>::iterator begin, typename std::list<MemoryChunk*>::iterator end) :
+				curChunk(begin),
+				lastChunk(end)
+				{
+					if (begin != end) {
+						assert(*curChunk != nullptr && "Chunk allocator: iterator's init");
+						curObject = (*curChunk)->m_objects.begin();
+					}
+					else
+						curObject = (*std::prev(lastChunk))->m_objects.end();
+				}
+
+				inline iterator& operator++() {
+					curObject++;
+
+					if (curObject == (*curChunk)->m_objects.end()) {
+						curChunk++;
+						if (curChunk != lastChunk) {
+							curObject = (*curChunk)->m_objects.begin();
+						}
+					}
+
+					return *this;
+				}
+
+				inline T& operator*() const { return *curObject; }
+				inline T* operator->() const { return *curObject; }
+
+				inline bool operator==(iterator& other) {
+					return (this->curChunk == other.curChunk) && (this->curObject == other.curObject);
+				}
+				inline bool operator!=(iterator& other) {
+					return (this->curChunk != other.curChunk) && (this->curObject != other.curObject);
+				}
+			};
+
 			ChunkAllocator() {
 				PoolAllocator* allocator = new PoolAllocator(m_allocSize, g_globalMemManager->Allocate(m_allocSize), sizeof(T), alignof(T));
 				this->m_chunks.push_back(new MemoryChunk(allocator));
@@ -97,6 +141,14 @@ namespace GECS {
 				}
 
 				assert(false && "Chunk allocator: error while deleting object");
+			}
+
+			inline iterator begin() {
+				return iterator(this->m_chunks.begin(), this->m_chunks.end());
+			}
+
+			inline iterator end() {
+				return iterator(this->m_chunks.end(), this->m_chunks.end());
 			}
 		};
 	}

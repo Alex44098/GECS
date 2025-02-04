@@ -18,7 +18,7 @@
 #include <chrono>
 
 // Creating ".dll" setting
-#ifdef GECS_FRAMEWORK  
+#ifdef GECS_EXPORT
 	#define GECS_API __declspec(dllexport)
 #else  
 	#define GECS_API __declspec(dllimport)

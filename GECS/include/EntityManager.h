@@ -1,5 +1,7 @@
 #pragma once
 
+#pragma warning(disable: 4251)
+
 #include "Facade.h"
 
 #include "Containers/EntityContainer.h"
@@ -49,6 +51,16 @@ namespace GECS {
 
 		inline Handle GetEntityHandle(Handle::value_type index) const {
 			return this->m_entityHandleTable[index];
+		}
+
+		template<class T>
+		inline typename EntityContainer<T>::iterator begin() {
+			return GetEntityContainer<T>(m_entityTypeContainers)->begin();
+		}
+
+		template<class T>
+		inline typename EntityContainer<T>::iterator end() {
+			return GetEntityContainer<T>(m_entityTypeContainers)->end();
 		}
 
 		void ReleaseEntity(Handle handle);

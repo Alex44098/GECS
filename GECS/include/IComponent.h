@@ -1,4 +1,7 @@
 #pragma once
+
+#pragma warning(disable: 4251)
+
 #include "Facade.h"
 #include "Handle/Handle.h"
 

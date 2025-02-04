@@ -80,6 +80,10 @@ namespace GECS
 			Assert::AreNotEqual((void*)cm->GetComponent<GameComponent>(eh), (void*)nullptr);
 			Assert::AreEqual(cm->GetComponent<GameComponent>(eh)->GetFoo(), 5);
 
+			for (auto it = cm->begin<GameComponent>(); it != cm->end<GameComponent>(); ++it) {
+				Assert::AreEqual(it->GetFoo(), 5);
+			}
+
 			em->ReleaseEntity(eh);
 			em->DestroyReleasedEntities();
 

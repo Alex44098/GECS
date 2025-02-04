@@ -1,5 +1,7 @@
 #pragma once
 
+#pragma warning(disable: 4251)
+
 #include "Facade.h"
 
 #include "Handle/Handle.h"
@@ -62,6 +64,16 @@ namespace GECS{
 			}
 
 			return static_cast<T*>(this->m_componentTableById[componentId]);
+		}
+
+		template<class T>
+		inline typename ComponentContainer<T>::iterator begin() {
+			return GetComponentContainer<T>(m_componentTypeContainers)->begin();
+		}
+
+		template<class T>
+		inline typename ComponentContainer<T>::iterator end() {
+			return GetComponentContainer<T>(m_componentTypeContainers)->end();
 		}
 
 		void ReleaseAllComponents(const Handle entityHandle);

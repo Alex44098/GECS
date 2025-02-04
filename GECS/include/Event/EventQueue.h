@@ -1,5 +1,7 @@
 #pragma once
 
+#pragma warning(disable: 4251)
+
 #include "Facade.h"
 #include "Delegate/ClassMethod.h"
 #include "Event/EventCollection.h"
