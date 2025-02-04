@@ -4,7 +4,7 @@
 
 namespace GECS {
 	namespace Util {
-		class EngineTimer {
+		class GECS_API EngineTimer {
 		private:
 
 			std::chrono::duration<f32, std::milli> m_elapsedTime;

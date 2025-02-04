@@ -4,7 +4,7 @@
 
 namespace GECS {
 	namespace Memory {
-		class LinearAllocator : public IAllocator {
+		class GECS_API LinearAllocator : public IAllocator {
 		private:
 			uptr m_currentPosition;
 

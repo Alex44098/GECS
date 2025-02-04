@@ -6,7 +6,7 @@
 #include "Memory/LinearAllocator.h"
 
 namespace GECS {
-	class SystemManager {
+	class GECS_API SystemManager {
 	private:
 		Memory::LinearAllocator* m_allocator;
 		std::unordered_map<type_id, ISystem*> m_systemsTable;

@@ -4,7 +4,7 @@
 
 namespace GECS {
 	namespace Memory {
-		class StackAllocator : public IAllocator {
+		class GECS_API StackAllocator : public IAllocator {
 
 		private:
 			uptr m_currentPosition;

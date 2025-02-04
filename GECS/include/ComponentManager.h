@@ -7,7 +7,7 @@
 #include "Containers/ComponentContainer.h"
 
 namespace GECS{
-	class ComponentManager {
+	class GECS_API ComponentManager {
 	private:
 
 		std::unordered_map<type_id, IComponentContainer*> m_componentTypeContainers;

@@ -13,7 +13,7 @@
 #define HIGHEST_SYSTEM_PRIORITY 10
 
 namespace GECS {
-	class ISystem {
+	class GECS_API ISystem {
 
 		friend class SystemManager;
 

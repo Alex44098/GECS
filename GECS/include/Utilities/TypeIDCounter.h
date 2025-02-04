@@ -6,7 +6,7 @@ namespace GECS {
 	namespace Identifier {
 
 		template<class InterfaceType>
-		class TypeIDCounter {
+		class GECS_API TypeIDCounter {
 
 			static type_id m_count;
 

@@ -4,7 +4,7 @@
 
 namespace GECS {
 	namespace Memory {
-		class PoolAllocator : public IAllocator {
+		class GECS_API PoolAllocator : public IAllocator {
 
 		private:
 			const size_t m_objectSize;

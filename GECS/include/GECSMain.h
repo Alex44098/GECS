@@ -3,7 +3,7 @@
 #include "Facade.h"
 
 namespace GECS {
-	class GECSMain {
+	class GECS_API GECSMain {
 		EntityManager* EM;
 		ComponentManager* CM;
 		SystemManager* SM;
@@ -18,7 +18,6 @@ namespace GECS {
 		inline ComponentManager* GetComponentManager() { return CM; }
 		inline SystemManager* GetSystemManager() { return SM; }
 		inline Event::EventQueue* GetEventQueue() { return EQ; }
-		inline int Test() { return 5; }
 
 		void Update(f32 delta);
 	};

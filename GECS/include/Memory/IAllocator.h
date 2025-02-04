@@ -28,7 +28,7 @@ namespace GECS {
 			return offset;
 		}
 
-		class IAllocator {
+		class GECS_API IAllocator {
 
 		protected:
 			const size_t m_memorySize;

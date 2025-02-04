@@ -6,7 +6,7 @@
 #include "ComponentManager.h"
 
 namespace GECS {
-	class IEntity {
+	class GECS_API IEntity {
 
 		friend class EntityManager;
 		friend class MemoryStressTest;

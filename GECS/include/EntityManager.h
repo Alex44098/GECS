@@ -6,7 +6,7 @@
 #include "Handle/HandleManager.h"
 
 namespace GECS {
-	class EntityManager {
+	class GECS_API EntityManager {
 
 	private:
 		std::unordered_map<type_id, IEntityContainer*> m_entityTypeContainers;

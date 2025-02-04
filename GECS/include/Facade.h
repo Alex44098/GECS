@@ -41,8 +41,8 @@ namespace GECS {
 	}
 
 	class GECSMain;
-	extern GECSMain* GECSInstance;
+	GECS_API extern GECSMain* GECSInstance;
 
-	void Init();
-	void Destroy();
+	GECS_API void Init();
+	GECS_API void Destroy();
 }

@@ -8,7 +8,7 @@
 
 namespace GECS {
 	namespace Event {
-		class EventQueue {
+		class GECS_API EventQueue {
 			Memory::LinearAllocator* m_eventAllocator;
 
 			std::unordered_map<type_id, IEventCollection*> m_eventsById;

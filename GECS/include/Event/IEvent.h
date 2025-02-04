@@ -4,7 +4,7 @@
 
 namespace GECS {
 	namespace Event {
-		class IEvent {
+		class GECS_API IEvent {
 		public:
 
 			IEvent();
