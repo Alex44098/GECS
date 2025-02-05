@@ -39,6 +39,8 @@ namespace GECS {
 		if (container == componentTypeContainers.end()) {
 			newContainer = new ComponentContainer<T>();
 			componentTypeContainers[componentTypeID] = newContainer;
+
+			L_(ldebug) << "Created a new component container with type " << typeid(T).name();
 		}
 		else
 			newContainer = static_cast<ComponentContainer<T>*>(container->second);

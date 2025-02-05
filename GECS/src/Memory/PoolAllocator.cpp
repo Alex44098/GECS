@@ -18,8 +18,10 @@ namespace GECS {
 			assert(size > 0 && "Pool allocator: size cant be 0");
 			assert(size == this->m_objectSize && align == this->m_objectAlignment && "Pool allocator: size and align should be standart");
 			
-			if (m_pool == nullptr)
+			if (m_pool == nullptr) {
+				L_(lwarning) << "Pool allocator: going beyond memory limits!";
 				return 0;
+			}
 
 			void* freeSlot = this->m_pool;
 

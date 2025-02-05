@@ -23,7 +23,14 @@ namespace GECS {
 			inline uptr Allocate(size_t size) {
 				uptr allocatedMemory = m_memoryAllocator->Allocate(size, alignof(u8));
 
-				assert(allocatedMemory != 0 && "Global memory: out of memory!");
+				if (allocatedMemory == 0) {
+					L_(lerror) << "Out of global memory!";
+					L_(lerror) << "Size of GM: " << m_memoryAllocator->GetMemorySize();
+					L_(lerror) << "Attempt to allocate memory with size " << size;
+					assert(false && "Global memory: out of memory!");
+				}
+
+				L_(linfo) << "An address " << allocatedMemory << " with a size of " << size << " has been allocated in global memory";
 
 				this->m_pendingAddresses.push_back(allocatedMemory);
 

@@ -72,11 +72,11 @@ namespace GECS
 		TEST_METHOD(MainTest) {
 			Assert::IsTrue(GECSInstance == nullptr);
 
-			L_(linfo) << "Engine init.";
+			L_(linfo) << "Engine init";
 
 			Init();
 
-			L_(linfo) << "Engine init.";
+			L_(ldebug) << "Engine init";
 
 			Assert::IsTrue(GECSInstance != nullptr);
 

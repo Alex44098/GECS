@@ -110,6 +110,9 @@ namespace GECS {
 					slot = chunk->m_allocator->Allocate(sizeof(T), alignof(T));
 					if (slot != 0) {
 						chunk->m_objects.push_back((T*)slot);
+
+						L_(ldebug) << "Chunk allocator: created a new chunk with type " << typeid(T).name();
+
 						return slot;
 					}
 					else

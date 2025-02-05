@@ -13,7 +13,15 @@ namespace GECS {
 	void Init() {
 		if (GECSInstance == nullptr) {
 			GECSInstance = new GECSMain();
-			initLogger("info.log", ldebug);
+			TLogLevel logLevel;
+
+			#if NDEBUG
+				logLevel = linfo;
+			#else
+				logLevel = ldebug;
+			#endif
+
+			initLogger("info.log", logLevel);
 		}
 	}
 

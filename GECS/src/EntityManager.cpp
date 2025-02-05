@@ -21,6 +21,8 @@ namespace GECS {
 			this->m_releasedEntities.push_back(handle);
 			this->m_numReleasedEntities++;
 		}
+
+		L_(ldebug) << "Released an entity with index" << handle.index;
 	}
 
 	Handle EntityManager::GetNewHandle(IEntity* entity) {

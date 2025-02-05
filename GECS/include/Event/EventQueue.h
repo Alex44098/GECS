@@ -44,6 +44,8 @@ namespace GECS {
 					eventTypeCollectionPair.second = newEventCollection;
 
 					this->m_eventsById.insert(eventTypeCollectionPair);
+
+					L_(ldebug) << "Created a new event collection with " << typeid(Event).name();
 				}
 				else {
 					this->m_eventsById[eventTypeId]->AddMethod(classMethod);
@@ -66,6 +68,7 @@ namespace GECS {
 				uptr address = m_eventAllocator->Allocate(sizeof(Event), alignof(Event));
 
 				assert(address != 0 && "EventHandler: address not allocated");
+				L_(ldebug) << typeid(Event).name() << " has been sent";
 
 				this->m_eventsQueue.push_back(new (reinterpret_cast<void*>(address))Event(std::forward<Arguments>(args)...));
 			}

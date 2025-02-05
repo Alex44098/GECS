@@ -47,6 +47,8 @@ namespace GECS {
 				this->m_systemDependencies[i].resize(systemId + 1);
 			}
 
+			L_(ldebug) << "Added new system " << typeid(T).name() << " with id " << systemId;
+
 			return newSystem;
 		}
 

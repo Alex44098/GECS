@@ -19,8 +19,10 @@ namespace GECS {
 			u8 offsetWithHeader = GetOffsetWithHeader(m_currentPosition, align, sizeof(StackAllocatorHeader));
 			uptr alignedAddress = this->m_currentPosition + offsetWithHeader;
 
-			if (alignedAddress - m_firstAddress + size > m_memorySize)
+			if (alignedAddress - m_firstAddress + size > m_memorySize) {
+				L_(lwarning) << "Stack allocator: going beyond memory limits!";
 				return 0;
+			}
 
 			StackAllocatorHeader* header = (StackAllocatorHeader*)(alignedAddress - sizeof(StackAllocatorHeader));
 			header->offset = offsetWithHeader;

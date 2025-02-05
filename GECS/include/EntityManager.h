@@ -42,6 +42,8 @@ namespace GECS {
 			// creating an object at a dedicated address
 			IEntity* entity = new (reinterpret_cast<void*>(address)) T (std::forward<Arguments>(args)...);
 
+			L_(ldebug) << "Created a new entity with index " << entityHandle.index;
+
 			return entityHandle;
 		}
 

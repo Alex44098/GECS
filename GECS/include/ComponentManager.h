@@ -43,6 +43,8 @@ namespace GECS{
 
 			AttachComponentToEntity(entityHandle, componentId, T::COMPONENT_TYPE_ID);
 
+			L_(ldebug) << "Added a new component " << typeid(T).name() << " for the entity " << entityHandle.index;
+
 			return static_cast<T*>(component);
 		}
 
@@ -53,6 +55,8 @@ namespace GECS{
 
 			GetComponentContainer<T>(m_componentTypeContainers)->ReleaseComponent(component);
 			DetachComponentToEntity(entityHandle, componentId, T::COMPONENT_TYPE_ID);
+
+			L_(ldebug) << "Released a component " << typeid(T).name() << " for the entity " << entityHandle.index;
 		}
 
 		template<class T>
