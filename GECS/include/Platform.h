@@ -1,6 +1,10 @@
 #pragma once
 
 // Declare includes
+#include <sstream>
+#include <string>
+#include <stdio.h>
+
 #include <stdlib.h>
 #include <stdarg.h>
 #include <stdint.h>
@@ -12,8 +16,8 @@
 #include <list>
 #include <unordered_map>
 #include <map>
-#include <algorithm>
 #include <functional>
+#include <algorithm>
 
 #include <chrono>
 

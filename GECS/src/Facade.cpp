@@ -11,12 +11,16 @@ namespace GECS {
 	GECSMain* GECSInstance = nullptr;
 
 	void Init() {
-		if (GECSInstance == nullptr)
+		if (GECSInstance == nullptr) {
 			GECSInstance = new GECSMain();
+			initLogger("info.log", ldebug);
+		}
 	}
 
 	void Destroy() {
-		if (GECSInstance != nullptr)
+		if (GECSInstance != nullptr) {
 			delete GECSInstance;
+			endLogger();
+		}
 	}
 }

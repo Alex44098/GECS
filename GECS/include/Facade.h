@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Logger/LiteLogger.h"
 #include "Platform.h"
 
 // Setting global memory size

@@ -40,6 +40,7 @@
     <ClInclude Include="include\IComponent.h" />
     <ClInclude Include="include\IEntity.h" />
     <ClInclude Include="include\ISystem.h" />
+    <ClInclude Include="include\Logger\LiteLogger.h" />
     <ClInclude Include="include\Memory\ChunkAllocator.h" />
     <ClInclude Include="include\Memory\IAllocator.h" />
     <ClInclude Include="include\Memory\GlobalMemoryManager.h" />
@@ -96,7 +97,7 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>

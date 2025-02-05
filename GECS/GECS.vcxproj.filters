@@ -39,6 +39,9 @@
     <Filter Include="Source files\Delegate">
       <UniqueIdentifier>{38505141-5173-4751-969e-dbcc964cddd6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header files\Logger">
+      <UniqueIdentifier>{7a53f8e7-0292-423c-93e5-9db354110735}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Component.h">
@@ -139,6 +142,9 @@
     </ClInclude>
     <ClInclude Include="include\GECSHeaders.h">
       <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Logger\LiteLogger.h">
+      <Filter>Header files\Logger</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
