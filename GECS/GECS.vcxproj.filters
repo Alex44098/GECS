@@ -137,7 +137,7 @@
     <ClInclude Include="include\GECSMain.h">
       <Filter>Header files</Filter>
     </ClInclude>
-    <ClInclude Include="GECSHeaders.h">
+    <ClInclude Include="include\GECSHeaders.h">
       <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>

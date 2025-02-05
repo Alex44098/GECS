@@ -19,7 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GECSHeaders.h" />
     <ClInclude Include="include\Containers\ComponentContainer.h" />
     <ClInclude Include="include\Containers\EntityContainer.h" />
     <ClInclude Include="include\Delegate\ClassMethod.h" />
@@ -34,6 +33,7 @@
     <ClInclude Include="include\ComponentManager.h" />
     <ClInclude Include="include\Entity.h" />
     <ClInclude Include="include\EntityManager.h" />
+    <ClInclude Include="include\GECSHeaders.h" />
     <ClInclude Include="include\GECSMain.h" />
     <ClInclude Include="include\Handle\Handle.h" />
     <ClInclude Include="include\Handle\HandleManager.h" />
