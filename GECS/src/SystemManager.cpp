@@ -14,6 +14,7 @@ namespace GECS {
 
 		Memory::g_globalMemManager->Free(this->m_allocator->GetAddressBegining());
 		delete this->m_allocator;
+		this->m_allocator = nullptr;
 	}
 
 	void SystemManager::Update(f32 delta) {

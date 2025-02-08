@@ -38,6 +38,7 @@ namespace GECS {
 					if (method->operator==(eventMethod)) {
 						this->m_eventMethodsList.remove(eventMethod);
 						delete eventMethod;
+						eventMethod = nullptr;
 
 						return;
 					}

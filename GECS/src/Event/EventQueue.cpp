@@ -12,6 +12,7 @@ namespace GECS {
 		EventQueue::~EventQueue() {
 			for (auto p : this->m_eventsById) {
 				delete p.second;
+				p.second = nullptr;
 			}
 
 			this->m_eventsById.clear();
@@ -19,6 +20,7 @@ namespace GECS {
 			Memory::g_globalMemManager->Free(this->m_eventAllocator->GetAddressBegining());
 
 			delete this->m_eventAllocator;
+			this->m_eventAllocator = nullptr;
 		}
 
 		void EventQueue::ProcessEvents() {

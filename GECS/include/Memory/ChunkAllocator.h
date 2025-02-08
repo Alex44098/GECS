@@ -94,8 +94,10 @@ namespace GECS {
 
 					// don't forget free allocator in chunk!!!
 					delete chunk->m_allocator;
+					chunk->m_allocator = nullptr;
 
 					delete chunk;
+					chunk = nullptr;
 				}
 				m_chunks.clear();
 			}
