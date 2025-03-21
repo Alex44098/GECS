@@ -73,7 +73,11 @@
     <ClCompile Include="src\EntityManager.cpp" />
     <ClCompile Include="src\SystemManager.cpp" />
     <ClCompile Include="src\Utilities\EngineTimer.cpp" />
+    <ClCompile Include="src\Utilities\SystemOrderBuilder.cpp" />
     <ClCompile Include="src\Utilities\TypeIDCounter.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -97,7 +101,7 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -163,6 +167,7 @@
       <PreprocessorDefinitions>_WINDLL;BUILD_DLL;GECS_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

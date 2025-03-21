@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GECS::Event::Event&lt;T&gt;" Collapsed="true">
+    <Position X="6.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAEQAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>include\Event\Event.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GECS::Event::EventCollection&lt;T&gt;" Collapsed="true">
+    <Position X="9.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAQAAAAAAAAAABAAAAAAAAAAAACAEAAAAAAAAQAAA=</HashCode>
+      <FileName>include\Event\EventCollection.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GECS::Event::EventQueue" Collapsed="true">
+    <Position X="17.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEEAAIAAAAAAABAAAEAJAIAAAQAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>include\Event\EventQueue.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GECS::Event::IEvent" Collapsed="true">
+    <Position X="6.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>include\Event\IEvent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GECS::Event::IEventCollection" Collapsed="true">
+    <Position X="9.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAIAQAAAACAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>include\Event\IEventCollection.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GECS::Memory::ChunkAllocator&lt;T, MAX_OBJECTS&gt;" Collapsed="true">
+    <Position X="1.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAABAAAIAAAAAAAQABAAAgAAAAAAIAACEAA=</HashCode>
+      <FileName>include\Memory\ChunkAllocator.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GECS::Memory::IAllocator" Collapsed="true">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAEEAAQAAAgAQBAAAAAAAAAAAAAAAIAEAABAAAI=</HashCode>
+      <FileName>include\Memory\IAllocator.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GECS::Memory::GlobalMemoryManager" Collapsed="true">
+    <Position X="13.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAEAAAAAAACAAAAAAAAAAAAAAgIACAQBAAAAAI=</HashCode>
+      <FileName>include\Memory\GlobalMemoryManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GECS::Memory::LinearAllocator" Collapsed="true">
+    <Position X="0.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAAAAAAAAAAIAAACAAAEBAAAI=</HashCode>
+      <FileName>include\Memory\LinearAllocator.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GECS::Memory::PoolAllocator" Collapsed="true">
+    <Position X="3" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEBAAAAAAAAAAAAAAEAAAABAAAAAIBAABAAAI=</HashCode>
+      <FileName>include\Memory\PoolAllocator.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GECS::Memory::StackAllocator" Collapsed="true">
+    <Position X="5.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAAAAABAAAAIAAACAAAABAAAI=</HashCode>
+      <FileName>include\Memory\StackAllocator.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GECS::Identifier::HandleManager&lt;T, handle_type&gt;" Collapsed="true">
+    <Position X="15.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAACEAAAAAEAAAAAAAAAEAAAAgAAAAQAAAAAA=</HashCode>
+      <FileName>include\Handle\HandleManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GECS::Identifier::TypeIDCounter&lt;InterfaceType&gt;" Collapsed="true">
+    <Position X="13.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIQQAAAA=</HashCode>
+      <FileName>include\Utilities\TypeIDCounter.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GECS::Log&lt;T&gt;" Collapsed="true">
+    <Position X="3.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABEEAAAAAAAAAgAAIAAAAEgAAIAAAA=</HashCode>
+      <FileName>include\Logger\LiteLogger.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GECS::Output2FILE" Collapsed="true">
+    <Position X="17.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAIAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>include\Logger\LiteLogger.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GECS::FILELog" Collapsed="true">
+    <Position X="3.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>include\Logger\LiteLogger.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GECS::ClassMethod&lt;Class, Method&gt;" Collapsed="true">
+    <Position X="4.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>include\Delegate\ClassMethod.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GECS::ClassMethod&lt;Class, void(Class::*)(void)&gt;" Collapsed="true">
+    <Position X="6.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAQAAAAEAAAAAAAAAAAACAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>include\Delegate\ClassMethod.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GECS::IClassMethod" Collapsed="true">
+    <Position X="5.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAAEQAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>include\Delegate\IClassMethod.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GECS::IComponentContainer" Collapsed="true">
+    <Position X="4.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>include\Containers\ComponentContainer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GECS::ComponentContainer&lt;T&gt;" Collapsed="true">
+    <Position X="1.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAACAgAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>include\Containers\ComponentContainer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GECS::IEntityContainer" Collapsed="true">
+    <Position X="4.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>include\Containers\EntityContainer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GECS::EntityContainer&lt;T&gt;" Collapsed="true">
+    <Position X="1.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>include\Containers\EntityContainer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GECS::EntityManager" Collapsed="true">
+    <Position X="15.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAABGgACACAAgAAAABAhAAAQAAAAAQIAAAAAIQAAAAA=</HashCode>
+      <FileName>include\EntityManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GECS::ComponentManager" Collapsed="true">
+    <Position X="12" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACgCAAAIAEgAIAAEBAAQCAAAAAAAAgEAAQAAACA=</HashCode>
+      <FileName>include\ComponentManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GECS::SystemManager" Collapsed="true">
+    <Position X="12" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABQEAAABEAAAAAAAAAAAAAAAUABBABAAACAAAAIIgAA=</HashCode>
+      <FileName>include\SystemManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GECS::GECSMain" Collapsed="true">
+    <Position X="12" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIwAAAAAABAAAAAAAEEAYAAAAAAAAAAAgAAEEAAAAAA=</HashCode>
+      <FileName>include\GECSMain.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GECS::Component&lt;T&gt;" Collapsed="true">
+    <Position X="8.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACgACAAAAAAAAAAAAgAAAAAAAAAAAAAAABAgAAAAAA=</HashCode>
+      <FileName>include\Component.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GECS::Entity&lt;T&gt;" Collapsed="true">
+    <Position X="0.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EACAAAAAAAAAAAAAAAAAAAAAACAAgAAAAgAAgAAAAAA=</HashCode>
+      <FileName>include\Entity.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GECS::IComponent" Collapsed="true">
+    <Position X="8.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAIQAAAAAAAAAAAAAAAAQBAAIAAAAAA=</HashCode>
+      <FileName>include\IComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GECS::IEntity" Collapsed="true">
+    <Position X="0.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAIAAAAAAAgBEAABAAAgAAEQAAAAAAAAAA=</HashCode>
+      <FileName>include\IEntity.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GECS::ISystem" Collapsed="true">
+    <Position X="8.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACQIEAAIAAABAAAAAAABAAIAAAABAAAAAAAAAAAACAA=</HashCode>
+      <FileName>include\ISystem.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GECS::System&lt;T&gt;" Collapsed="true">
+    <Position X="8.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAIAAIAAAAAABAAEAAAAAiAAAAAAAAAAAAAA=</HashCode>
+      <FileName>include\System.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GECS::Util::EngineTimer" Collapsed="true">
+    <Position X="13.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAgAAAAAABAQAAAAAAAAQAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>include\Utilities\EngineTimer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="GECS::Identifier::UniversalHandle&lt;handle_value_type, index_bits, version_bits&gt;" Collapsed="true">
+    <Position X="12" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAgAAAAAAgAAAAAAgAAAAAAAAAABAAAAApAAA=</HashCode>
+      <FileName>include\Handle\Handle.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="GECS::TLogLevel" Collapsed="true">
+    <Position X="12" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAHAIAAAEAAAAAAAAAAAEAAAQAAAAAACAAAA=</HashCode>
+      <FileName>include\Logger\LiteLogger.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -22,8 +22,8 @@ namespace GECS
 	TEST_CLASS(ComponentTest)
 	{
 		class GameComponent : public Component<GameComponent> {
-			int foo;
 		public:
+			int foo;
 			GameComponent(int foo) {
 				this->foo = foo;
 			}
@@ -44,7 +44,7 @@ namespace GECS
 
 		TEST_METHOD(ComponentCreation) {
 			Assert::AreEqual(0, (int)GameComponent::COMPONENT_TYPE_ID);
-
+			
 			ComponentManager* cm = new ComponentManager();
 			EntityManager* em = new EntityManager(cm);
 
@@ -55,6 +55,10 @@ namespace GECS
 			Assert::AreEqual(en->GetEntityHandle(), eh);
 
 			Assert::AreEqual(cm->GetComponent<GameComponent>(eh)->GetFoo(), 10);
+
+			cm->GetComponent<GameComponent>(eh)->foo = 100;
+
+			Assert::AreEqual(cm->GetComponent<GameComponent>(eh)->GetFoo(), 100);
 
 			em->ReleaseEntity(eh);
 			em->DestroyReleasedEntities();

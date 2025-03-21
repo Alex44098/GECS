@@ -18,7 +18,7 @@ namespace GECS {
 	template<class T>
 	class EntityContainer : public Memory::ChunkAllocator<T, ENTITY_CONTAINER_CHUNK_MAX_OBJECTS>, public IEntityContainer {
 	public:
-		EntityContainer() : ChunkAllocator()
+		EntityContainer() : Memory::ChunkAllocator<T, ENTITY_CONTAINER_CHUNK_MAX_OBJECTS>()
 		{}
 
 		virtual ~EntityContainer()

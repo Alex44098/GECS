@@ -30,13 +30,18 @@ namespace GECS {
 			std::list<MemoryChunk*> m_chunks;
 
 		public:
-			class iterator : public std::iterator<std::forward_iterator_tag, T>
+			class iterator
 			{
 				typename std::list<MemoryChunk*>::iterator curChunk;
 				typename std::list<MemoryChunk*>::iterator lastChunk;
 				typename std::list<T*>::iterator curObject;
 
 			public:
+				using iterator_category = std::contiguous_iterator_tag;
+				using value_type = T;
+				using difference_type = std::ptrdiff_t;
+				using pointer = T*;
+				using reference = T&;
 
 				iterator(typename std::list<MemoryChunk*>::iterator begin, typename std::list<MemoryChunk*>::iterator end) :
 				curChunk(begin),
@@ -48,6 +53,7 @@ namespace GECS {
 					}
 					else
 						curObject = (*std::prev(lastChunk))->m_objects.end();
+					
 				}
 
 				inline iterator& operator++() {
@@ -63,15 +69,15 @@ namespace GECS {
 					return *this;
 				}
 
-				inline T& operator*() const { return *curObject; }
-				inline T* operator->() const { return *curObject; }
+				inline reference operator*() const { return *curObject; }
+				inline pointer operator->() const { return *curObject; }
 
 				inline bool operator==(iterator& other) {
 					return (this->curChunk == other.curChunk) && (this->curObject == other.curObject);
 				}
-				inline bool operator!=(iterator& other) {
-					return (this->curChunk != other.curChunk) && (this->curObject != other.curObject);
-				}
+				//inline bool operator!=(iterator& other) {
+				//	return (this->curChunk != other.curChunk) && (this->curObject != other.curObject);
+				//}
 			};
 
 			ChunkAllocator() {

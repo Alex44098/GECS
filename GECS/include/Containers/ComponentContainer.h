@@ -18,7 +18,7 @@ namespace GECS {
 	template<class T>
 	class ComponentContainer : public Memory::ChunkAllocator<T, COMPONENT_CONTAINER_CHUNK_MAX_OBJECTS>, public IComponentContainer {
 	public:
-		ComponentContainer() : ChunkAllocator()
+		ComponentContainer() : Memory::ChunkAllocator<T, COMPONENT_CONTAINER_CHUNK_MAX_OBJECTS>()
 		{}
 
 		virtual ~ComponentContainer()
