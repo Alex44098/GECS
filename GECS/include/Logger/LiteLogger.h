@@ -4,6 +4,13 @@
 
 #include "Platform.h"
 
+#if GECS_64
+    #define NOMINMAX
+    #include <windows.h>
+#else
+    #include <sys/time.h>
+#endif
+
 namespace GECS {
     enum TLogLevel { lerror, lwarning, linfo, ldebug, ldebug1, ldebug2, ldebug3, ldebug4 };
 
@@ -123,28 +130,28 @@ namespace GECS {
             else FILELog().Get(level)
     
     #if GECS_64
-    
-    #define NOMINMAX
-    #include <windows.h>
+        
+        // #define NOMINMAX
+        // #include <windows.h>
 
-    inline std::string NowTime()
-    {
-        const i64 MAX_LEN = 200;
-        char buffer[MAX_LEN];
-        if (GetTimeFormatA(LOCALE_USER_DEFAULT, 0, 0,
-            "HH':'mm':'ss", buffer, MAX_LEN) == 0)
-            return "Error in NowTime()";
+        inline std::string NowTime()
+        {
+            const i64 MAX_LEN = 200;
+            char buffer[MAX_LEN];
+            if (GetTimeFormatA(LOCALE_USER_DEFAULT, 0, 0,
+                "HH':'mm':'ss", buffer, MAX_LEN) == 0)
+                return "Error in NowTime()";
 
-        char result[100] = { 0 };
-        static DWORD first = GetTickCount();
-        sprintf_s(result, "%s.%03ld", buffer, (long)(GetTickCount() - first) % 1000);
-        return result;
-    }
+            char result[100] = { 0 };
+            static DWORD first = GetTickCount();
+            sprintf_s(result, "%s.%03ld", buffer, (long)(GetTickCount64() - first) % 1000);
+            return result;
+        }
 
     #else
     
-    #include <sys/time.h>
-    
+        #include <sys/time.h>
+
         inline std::string NowTime()
         {
             char buffer[11];
@@ -159,7 +166,7 @@ namespace GECS {
             return result;
         }
     
-    #endif //WIN32
+    #endif //GECS64
 
     inline void initLogger(const char* file, TLogLevel level)
     {

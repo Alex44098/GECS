@@ -38,7 +38,7 @@ namespace GECS {
 
 	namespace Memory {
 		class GlobalMemoryManager;
-		extern GlobalMemoryManager* g_globalMemManager; // global manager
+		GECS_API extern GlobalMemoryManager* g_globalMemManager; // global manager
 	}
 
 	class GECSMain;
