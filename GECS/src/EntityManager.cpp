@@ -5,12 +5,16 @@ namespace GECS {
 		m_releasedEntities(1024),
 		m_numReleasedEntities(0),
 		m_componentManagerSingleton(componentManagerSingleton)
-	{}
+	{
+		L_(ldebug) << "Entity manager has been initialized";
+	}
 
 	EntityManager::~EntityManager() {
+		L_(ldebug) << "Start of the entity manager's destruction";
 		for (auto container : this->m_entityTypeContainers) {
 			delete container.second;
 		}
+		L_(ldebug) << "Entity manager has been destroyed";
 	}
 
 	void EntityManager::ReleaseEntity(Handle handle) {

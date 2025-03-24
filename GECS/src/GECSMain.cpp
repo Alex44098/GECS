@@ -18,8 +18,8 @@ namespace GECS {
 	}
 
 	GECSMain::~GECSMain() {
-		delete this->CM;
 		delete this->EM;
+		delete this->CM;
 		delete this->SM;
 		delete this->EQ;
 		delete this->ET;

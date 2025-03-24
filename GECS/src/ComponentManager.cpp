@@ -8,12 +8,16 @@ namespace GECS {
 		for (size_t i = 0; i < ENTITY_COMPONENT_TABLE_GROW_SIZE; i++) {
 			this->m_entityComponentsIdByTypes[i].resize(numComponents, INVALID_OBJECT_ID);
 		}
+
+		L_(ldebug) << "Component manager has been initialized";
 	}
 
 	ComponentManager::~ComponentManager() {
+		L_(ldebug) << "Start of the component manager's destruction";
 		for (auto container : this->m_componentTypeContainers) {
 			delete container.second;
 		}
+		L_(ldebug) << "Component manager has been destroyed";
 	}
 
 	object_id ComponentManager::GetNewId(IComponent* component) {

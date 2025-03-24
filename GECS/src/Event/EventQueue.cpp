@@ -7,9 +7,11 @@ namespace GECS {
 		EventQueue::EventQueue() {
 			this->m_eventAllocator = new Memory::LinearAllocator(GECS_EVENT_BUFFER_MEMORY_SIZE, Memory::g_globalMemManager->Allocate(GECS_EVENT_BUFFER_MEMORY_SIZE));
 			this->m_eventsQueue.reserve(512);
+			L_(ldebug) << "Event queue has been initialized";
 		}
 
 		EventQueue::~EventQueue() {
+			L_(ldebug) << "Start of the event queue's destruction";
 			for (auto p : this->m_eventsById) {
 				delete p.second;
 				p.second = nullptr;
@@ -21,6 +23,7 @@ namespace GECS {
 
 			delete this->m_eventAllocator;
 			this->m_eventAllocator = nullptr;
+			L_(ldebug) << "Event queue has been destroyed";
 		}
 
 		void EventQueue::ProcessEvents() {
