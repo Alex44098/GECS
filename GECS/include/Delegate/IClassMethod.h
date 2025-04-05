@@ -3,7 +3,7 @@
 #include "Event/IEvent.h"
 
 namespace GECS {
-	class IClassMethod {
+	class GECS_API IClassMethod {
 	public:
 
 		IClassMethod();

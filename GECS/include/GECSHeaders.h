@@ -11,5 +11,6 @@
 #include "EntityManager.h"
 #include "ComponentManager.h"
 #include "SystemManager.h"
+#include "Event/EventQueue.h"
 
 #include "Event/Event.h"
