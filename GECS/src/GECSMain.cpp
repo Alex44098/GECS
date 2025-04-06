@@ -28,6 +28,7 @@ namespace GECS {
 	void GECSMain::Update(f32 delta) {
 		ET->Tick(delta);
 
+		EQ->ProcessEvents();
 		SM->Update(delta);
 
 		EM->DestroyReleasedEntities();
