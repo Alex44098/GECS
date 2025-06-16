@@ -16,7 +16,9 @@ namespace GECS {
 
 		uptr PoolAllocator::Allocate(size_t size, u8 align) { // This is where "SOLID" leaves us
 			assert(size > 0 && "Pool allocator: size cant be 0");
-			assert(size == this->m_objectSize && align == this->m_objectAlignment && "Pool allocator: size and align should be standart");
+			assert(size == this->m_objectSize &&
+				align == this->m_objectAlignment &&
+				"Pool allocator: size and align should be standart");
 			
 			if (m_pool == nullptr) {
 				L_(lwarning) << "Pool allocator: going beyond memory limits!";
@@ -35,9 +37,7 @@ namespace GECS {
 
 		void PoolAllocator::Free(uptr address) {
 			*((void**)address) = this->m_pool;
-
 			this->m_pool = (void**)address;
-
 			this->m_numAllocations--;
 		}
 

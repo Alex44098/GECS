@@ -71,12 +71,12 @@ namespace GECS{
 		}
 
 		template<class T>
-		inline typename ComponentContainer<T>::iterator begin() {
+		inline typename ComponentContainer<T>::ChunkIterator begin() {
 			return GetComponentContainer<T>(m_componentTypeContainers)->begin();
 		}
 
 		template<class T>
-		inline typename ComponentContainer<T>::iterator end() {
+		inline typename ComponentContainer<T>::ChunkIterator end() {
 			return GetComponentContainer<T>(m_componentTypeContainers)->end();
 		}
 

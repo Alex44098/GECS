@@ -30,7 +30,7 @@ namespace GECS {
 			std::list<MemoryChunk*> m_chunks;
 
 		public:
-			class iterator
+			class ChunkIterator
 			{
 				typename std::list<MemoryChunk*>::iterator curChunk;
 				typename std::list<MemoryChunk*>::iterator lastChunk;
@@ -43,7 +43,7 @@ namespace GECS {
 				using pointer = T*;
 				using reference = T&;
 
-				iterator(typename std::list<MemoryChunk*>::iterator begin, typename std::list<MemoryChunk*>::iterator end) :
+				ChunkIterator(typename std::list<MemoryChunk*>::iterator begin, typename std::list<MemoryChunk*>::iterator end) :
 				curChunk(begin),
 				lastChunk(end)
 				{
@@ -56,7 +56,7 @@ namespace GECS {
 					
 				}
 
-				inline iterator& operator++() {
+				inline ChunkIterator& operator++() {
 					curObject++;
 
 					if (curObject == (*curChunk)->m_objects.end()) {
@@ -72,12 +72,9 @@ namespace GECS {
 				inline reference operator*() const { return *curObject; }
 				inline pointer operator->() const { return *curObject; }
 
-				inline bool operator==(iterator& other) {
+				inline bool operator==(ChunkIterator& other) {
 					return (this->curChunk == other.curChunk) && (this->curObject == other.curObject);
 				}
-				//inline bool operator!=(iterator& other) {
-				//	return (this->curChunk != other.curChunk) && (this->curObject != other.curObject);
-				//}
 			};
 
 			ChunkAllocator() {
@@ -118,9 +115,6 @@ namespace GECS {
 					slot = chunk->m_allocator->Allocate(sizeof(T), alignof(T));
 					if (slot != 0) {
 						chunk->m_objects.push_back((T*)slot);
-
-						L_(ldebug) << "Chunk allocator: created a new chunk with type " << typeid(T).name();
-
 						return slot;
 					}
 					else
@@ -130,6 +124,7 @@ namespace GECS {
 				// creating new chunk
 				PoolAllocator* allocator = new PoolAllocator(m_allocSize, g_globalMemManager->Allocate(m_allocSize), sizeof(T), alignof(T));
 				MemoryChunk* newChunk = new MemoryChunk(allocator);
+				L_(ldebug) << "Chunk allocator: created a new chunk with type " << typeid(T).name();
 
 				this->m_chunks.push_front(newChunk);
 
@@ -154,12 +149,12 @@ namespace GECS {
 				assert(false && "Chunk allocator: error while deleting object");
 			}
 
-			inline iterator begin() {
-				return iterator(this->m_chunks.begin(), this->m_chunks.end());
+			inline ChunkIterator begin() {
+				return ChunkIterator(this->m_chunks.begin(), this->m_chunks.end());
 			}
 
-			inline iterator end() {
-				return iterator(this->m_chunks.end(), this->m_chunks.end());
+			inline ChunkIterator end() {
+				return ChunkIterator(this->m_chunks.end(), this->m_chunks.end());
 			}
 		};
 	}

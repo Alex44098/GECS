@@ -56,12 +56,12 @@ namespace GECS {
 		}
 
 		template<class T>
-		inline typename EntityContainer<T>::iterator begin() {
+		inline typename EntityContainer<T>::ChunkIterator begin() {
 			return GetEntityContainer<T>(m_entityTypeContainers)->begin();
 		}
 
 		template<class T>
-		inline typename EntityContainer<T>::iterator end() {
+		inline typename EntityContainer<T>::ChunkIterator end() {
 			return GetEntityContainer<T>(m_entityTypeContainers)->end();
 		}
 
